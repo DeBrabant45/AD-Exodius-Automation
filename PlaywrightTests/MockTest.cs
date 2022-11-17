@@ -1,5 +1,6 @@
 using Microsoft.Playwright;
 using PlaywrightLibrary.Driver;
+using PlaywrightLibrary.Elements;
 
 namespace PlaywrightTests;
 
@@ -12,7 +13,7 @@ public class MockTest
     {
         _pageDriver = new PageDriver();
         var options = new BrowserTypeLaunchOptions();
-        var url = "https://google.com";
+        var url = "https://automationintesting.online/";
         options.Headless = false;
         await _pageDriver.Start(Browser.Chrome, options);
         await _pageDriver.GoToUrl(url);
@@ -21,6 +22,8 @@ public class MockTest
     [Test]
     public async Task SimpleTest()
     {
+        TextInputElement NameField = _pageDriver.FindElementById<TextInputElement>("name");
+        await NameField.TypeInput("Hello");
         await _pageDriver.Quit();
         Assert.Pass();
     }

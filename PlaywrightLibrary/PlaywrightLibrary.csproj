@@ -10,9 +10,4 @@
     <PackageReference Include="Microsoft.Playwright" Version="1.27.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Locators\" />
-    <Folder Include="Elements\" />
-  </ItemGroup>
-
 </Project>
