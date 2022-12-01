@@ -37,4 +37,14 @@ public class PageDriver : IDriver
     {
         return Find<TElement>(new IdFindStrategy(id));
     }
+
+    public TElement FindElementByCss<TElement>(string css) where TElement : IElement
+    {
+        return Find<TElement>(new CssSelectorFindStrategy(css));
+    }    
+    
+    public TElement FindElementByXPath<TElement>(string xpath) where TElement : IElement
+    {
+        return Find<TElement>(new XPathFindStrategy(xpath));
+    }
 }

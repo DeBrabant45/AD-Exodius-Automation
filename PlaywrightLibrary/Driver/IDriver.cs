@@ -1,6 +1,6 @@
 ﻿namespace PlaywrightLibrary.Driver;
 
-public interface IDriver : IBrowserService, INavigationService
+public interface IDriver : IBrowserService, INavigationService, IElementFindService
 {
 
 }

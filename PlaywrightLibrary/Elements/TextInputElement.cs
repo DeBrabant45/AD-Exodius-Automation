@@ -9,5 +9,11 @@ public class TextInputElement : BaseElement
 
     }
 
-    public async Task TypeInput(string input) => await Locator.FillAsync(input);
+    public async Task TypeInput(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return;
+
+        await Locator.FillAsync(input);
+    }
 }
