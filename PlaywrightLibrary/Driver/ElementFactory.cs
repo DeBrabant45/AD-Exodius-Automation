@@ -1,5 +1,4 @@
-﻿using Microsoft.Playwright;
-using PlaywrightLibrary.Elements;
+﻿using PlaywrightLibrary.Elements;
 
 namespace PlaywrightLibrary.Driver;
 

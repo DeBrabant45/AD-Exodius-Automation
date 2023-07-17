@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace PlaywrightLibrary.Driver;
+﻿namespace PlaywrightLibrary.Driver;
 
 public interface INavigationService
 {

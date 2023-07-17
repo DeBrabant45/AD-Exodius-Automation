@@ -1,30 +1,29 @@
-using Microsoft.Playwright;
+using PlaywrightLibrary.Configuration;
 using PlaywrightLibrary.Driver;
 using PlaywrightLibrary.Elements;
 
 namespace PlaywrightTests;
 
+[TestFixture]
 public class MockTest
 {
-    private PageDriver _pageDriver;
+    private IDriver _driver;
 
     [SetUp]
     public async Task Setup()
     {
-        _pageDriver = new PageDriver();
-        var options = new BrowserTypeLaunchOptions();
-        var url = "https://automationintesting.online/";
-        options.Headless = false;
-        await _pageDriver.Start(Browser.Chrome, options);
-        await _pageDriver.GoToUrl(url);
+        _driver = new PageDriver();
+        var testSettings = ConfigurationReader.Read();
+        await _driver.Start(testSettings);
+        await _driver.GoToUrl(testSettings.ApplicationUrl);
     }
 
     [Test]
     public async Task SimpleTest()
     {
-        TextInputElement NameField = _pageDriver.FindElementById<TextInputElement>("name");
+        TextInputElement NameField = _driver.FindElementById<TextInputElement>("name");
         await NameField.TypeInput("Hello");
-        await _pageDriver.Quit();
-        Assert.Pass();
+        var actualText = await NameField.Text();
+        Assert.AreEqual("Hello", actualText);
     }
 }

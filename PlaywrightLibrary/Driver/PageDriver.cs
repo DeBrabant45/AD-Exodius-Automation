@@ -1,4 +1,4 @@
-﻿using Microsoft.Playwright;
+﻿using PlaywrightLibrary.Configuration;
 using PlaywrightLibrary.Elements;
 using PlaywrightLibrary.Locators;
 
@@ -12,14 +12,14 @@ public class PageDriver : IDriver
 
     public PageDriver()
     {
-        _browserFactory= new BrowserFactory();
-        _elementFactory= new ElementFactory();
+        _browserFactory = new BrowserFactory();
+        _elementFactory = new ElementFactory();
     }
 
-    public async Task Start(Browser browserType, BrowserTypeLaunchOptions options)
+    public async Task Start(TestSettings settings)
     {
         var playwright = await Playwright.CreateAsync();
-        var browser = await _browserFactory.CreateBrowser(playwright, browserType, options);
+        var browser = await _browserFactory.CreateBrowser(playwright, settings);
         _page = await browser.NewPageAsync();
     }
 

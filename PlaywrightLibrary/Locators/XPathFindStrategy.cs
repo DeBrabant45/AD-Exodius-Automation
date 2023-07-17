@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PlaywrightLibrary.Locators;
+﻿namespace PlaywrightLibrary.Locators;
 
 public class XPathFindStrategy : FindStrategy
 {

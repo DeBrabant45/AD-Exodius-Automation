@@ -1,6 +1,4 @@
-﻿using Microsoft.Playwright;
-
-namespace PlaywrightLibrary.Elements;
+﻿namespace PlaywrightLibrary.Elements;
 
 public class TextInputElement : BaseElement
 {

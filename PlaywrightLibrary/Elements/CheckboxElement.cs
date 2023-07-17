@@ -1,7 +1,4 @@
-﻿using Microsoft.Playwright;
-using System.Threading.Tasks;
-
-namespace PlaywrightLibrary.Elements;
+﻿namespace PlaywrightLibrary.Elements;
 
 public class CheckboxElement : BaseElement
 {

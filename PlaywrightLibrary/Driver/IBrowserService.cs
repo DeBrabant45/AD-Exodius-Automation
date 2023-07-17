@@ -1,9 +1,9 @@
-﻿using Microsoft.Playwright;
+﻿using PlaywrightLibrary.Configuration;
 
 namespace PlaywrightLibrary.Driver;
 
 public interface IBrowserService
 {
-    public Task Start(Browser browserType, BrowserTypeLaunchOptions options);
+    public Task Start(TestSettings settings);
     public Task Quit();
 }
