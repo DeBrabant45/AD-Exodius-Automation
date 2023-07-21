@@ -2,7 +2,7 @@
 
 namespace PlaywrightLibrary.Driver;
 
-public class ElementFactory
+public class ElementFactory : IElementFactory
 {
     public TElement Create<TElement>(ILocator locator) where TElement : IElement
     {

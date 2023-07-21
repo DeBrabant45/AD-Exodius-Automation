@@ -3,7 +3,7 @@ using System.IO;
 
 namespace PlaywrightLibrary.Driver;
 
-public class BrowserFactory
+public class BrowserFactory : IBrowserFactory
 {
     public async Task<IBrowser> CreateBrowser(IPlaywright playwright, TestSettings settings)
     {

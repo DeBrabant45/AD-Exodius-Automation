@@ -8,14 +8,20 @@ namespace PlaywrightTests;
 public class MockTest
 {
     private IDriver _driver;
+    private TestSettings _settings;
+
+    public MockTest()
+    {
+        var browserFactory = new BrowserFactory();
+        var elementFactory = new ElementFactory();
+        _settings = ConfigurationReader.Read();
+        _driver = new PageDriver(browserFactory, elementFactory, _settings);
+    }
 
     [SetUp]
     public async Task Setup()
     {
-        _driver = new PageDriver();
-        var testSettings = ConfigurationReader.Read();
-        await _driver.Start(testSettings);
-        await _driver.GoToUrl(testSettings.ApplicationUrl);
+        await _driver.GoToUrl(_settings.ApplicationUrl);
     }
 
     [Test]

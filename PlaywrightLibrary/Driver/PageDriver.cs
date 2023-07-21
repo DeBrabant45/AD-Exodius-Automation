@@ -6,21 +6,19 @@ namespace PlaywrightLibrary.Driver;
 
 public class PageDriver : IDriver
 {
-    private IPage _page;
-    private BrowserFactory _browserFactory;
-    private ElementFactory _elementFactory;
+    private readonly IPage _page;
+    private readonly IBrowserFactory _browserFactory;
+    private readonly IElementFactory _elementFactory;
+    private readonly IPlaywright _playwright;
 
-    public PageDriver()
+    public PageDriver(IBrowserFactory browserFactory, IElementFactory elementFactory, TestSettings settings)
     {
-        _browserFactory = new BrowserFactory();
-        _elementFactory = new ElementFactory();
-    }
-
-    public async Task Start(TestSettings settings)
-    {
-        var playwright = await Playwright.CreateAsync();
-        var browser = await _browserFactory.CreateBrowser(playwright, settings);
-        _page = await browser.NewPageAsync();
+        _browserFactory = browserFactory;
+        _elementFactory = elementFactory;
+        _playwright = Playwright.CreateAsync().Result;
+        _page = _browserFactory
+            .CreateBrowser(_playwright, settings).Result
+            .NewPageAsync().Result;
     }
 
     public async Task GoToUrl(string url) => await _page.GotoAsync(url);
