@@ -45,4 +45,9 @@ public class PageDriver : IDriver
     {
         return Find<TElement>(new XPathFindStrategy(xpath));
     }
+
+    public async Task TakeScreenshotAsync(string fileName)
+    {
+        await _page.ScreenshotAsync(new PageScreenshotOptions() { Path = fileName, FullPage = true });
+    }
 }
