@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mock.SwagLabs\Mock.SwagLabs.csproj" />
-    <ProjectReference Include="..\PlaywrightLibrary\PlaywrightLibaray.csproj" />
+    <ProjectReference Include="..\PlaywrightLibrary\PlaywrightLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

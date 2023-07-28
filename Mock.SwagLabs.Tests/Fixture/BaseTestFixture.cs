@@ -25,5 +25,6 @@ public class BaseTestFixture : XunitContextBase
             Console.WriteLine("This is where we capture info of failed tests");
         }
         base.Dispose();
+        Driver.Quit();
     }
 }

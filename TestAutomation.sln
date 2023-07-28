@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaywrightLibaray", "PlaywrightLibrary\PlaywrightLibaray.csproj", "{10C91B98-38F4-4EC4-84EF-3F949011E023}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaywrightLibrary", "PlaywrightLibrary\PlaywrightLibrary.csproj", "{10C91B98-38F4-4EC4-84EF-3F949011E023}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaywrightTests", "PlaywrightTests\PlaywrightTests.csproj", "{D59CBFCF-F3B4-47EB-91DF-F57DDB5A5214}"
 EndProject
