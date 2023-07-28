@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Mock.SwagLabs.Pages;
+using Mock.SwagLabs.Sections.Navigationbar;
 using PlaywrightLibrary.Configuration;
 using PlaywrightLibrary.Driver;
 
-namespace Mock.Tests;
+namespace Mock.SwagLabs.Tests;
 
 public class Startup
 {
@@ -12,6 +14,8 @@ public class Startup
             .AddSingleton(ConfigurationReader.Read())
             .AddScoped<IBrowserFactory, BrowserFactory>()
             .AddScoped<IElementFactory, ElementFactory>()
-            .AddScoped<IDriver, PageDriver>();
+            .AddScoped<IDriver, PageDriver>()
+            .AddScoped<NavigationbarSection>()
+            .AddScoped<LoginPage>();
     }
 }

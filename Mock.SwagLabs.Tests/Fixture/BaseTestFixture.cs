@@ -1,7 +1,7 @@
 ﻿using PlaywrightLibrary.Configuration;
 using PlaywrightLibrary.Driver;
 
-namespace Mock.Tests.Fixture;
+namespace Mock.SwagLabs.Tests.Fixture;
 
 public class BaseTestFixture : XunitContextBase
 {

@@ -1,5 +1,4 @@
 ﻿using PlaywrightLibrary.Configuration;
-using System.IO;
 
 namespace PlaywrightLibrary.Driver;
 

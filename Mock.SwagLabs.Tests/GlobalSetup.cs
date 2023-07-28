@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Mock.Tests;
+namespace Mock.SwagLabs.Tests;
+
 public class GlobalSetup
 {
     /// <summary>

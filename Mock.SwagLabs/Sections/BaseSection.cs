@@ -1,4 +1,4 @@
-﻿namespace Mock.Product.Sections;
+﻿namespace Mock.SwagLabs.Sections;
 
 public abstract class BaseSection
 {

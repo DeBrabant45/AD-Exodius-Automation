@@ -12,4 +12,6 @@ public interface IElementFindService
     public TElement FindElementByCss<TElement>(string css) where TElement : IElement;
 
     public TElement FindElementByXPath<TElement>(string xpath) where TElement : IElement;
+
+    public TElement FindElementByTestData<TElement>(string xpath) where TElement : IElement;
 }

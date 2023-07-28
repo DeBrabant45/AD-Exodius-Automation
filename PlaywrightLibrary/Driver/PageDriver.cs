@@ -1,4 +1,5 @@
-﻿using PlaywrightLibrary.Configuration;
+﻿using PlaywrightLibaray.Locators;
+using PlaywrightLibrary.Configuration;
 using PlaywrightLibrary.Elements;
 using PlaywrightLibrary.Locators;
 
@@ -44,6 +45,11 @@ public class PageDriver : IDriver
     public TElement FindElementByXPath<TElement>(string xpath) where TElement : IElement
     {
         return Find<TElement>(new XPathFindStrategy(xpath));
+    }
+
+    public TElement FindElementByTestData<TElement>(string testdata) where TElement : IElement
+    {
+        return Find<TElement>(new TestDataFindStrategy(testdata));
     }
 
     public async Task TakeScreenshotAsync(string fileName)
