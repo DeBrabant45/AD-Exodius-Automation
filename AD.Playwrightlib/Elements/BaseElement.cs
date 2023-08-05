@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 
-namespace PlaywrightLibrary.Elements;
+namespace AD.Playwrightlib.Elements;
 
 public class BaseElement : IElement
 {

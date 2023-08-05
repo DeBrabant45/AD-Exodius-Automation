@@ -1,6 +1,6 @@
 ﻿global using System;
-global using PlaywrightLibrary.Driver;
-global using PlaywrightLibrary.Elements;
+global using AD.Playwrightlib.Driver;
+global using AD.Playwrightlib.Elements;
 global using System.Collections.Generic;
 global using System.Linq;
 global using System.Text;

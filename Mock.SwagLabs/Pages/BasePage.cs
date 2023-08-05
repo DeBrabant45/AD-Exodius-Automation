@@ -5,11 +5,9 @@ namespace Mock.SwagLabs.Pages;
 public abstract class BasePage 
 {
     protected IDriver Driver;
-    protected NavigationbarSection Navigationbar;
 
-    protected BasePage(IDriver driver, NavigationbarSection navigationbar)
+    protected BasePage(IDriver driver)
     {
         Driver = driver;
-        Navigationbar = navigationbar;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PlaywrightLibaray.Driver;
+﻿namespace AD.Playwrightlib.Driver;
 
 public class ApiDriver
 {

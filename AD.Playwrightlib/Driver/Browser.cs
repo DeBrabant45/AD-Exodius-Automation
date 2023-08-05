@@ -1,4 +1,4 @@
-﻿namespace PlaywrightLibrary.Driver;
+﻿namespace AD.Playwrightlib.Driver;
 
 public enum Browser
 {

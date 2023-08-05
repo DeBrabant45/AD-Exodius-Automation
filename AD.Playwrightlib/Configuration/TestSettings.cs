@@ -1,6 +1,6 @@
-﻿using PlaywrightLibrary.Driver;
+﻿using AD.Playwrightlib.Driver;
 
-namespace PlaywrightLibrary.Configuration;
+namespace AD.Playwrightlib.Configuration;
 
 public class TestSettings
 {

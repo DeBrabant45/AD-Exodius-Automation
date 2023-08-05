@@ -1,7 +1,7 @@
-﻿using PlaywrightLibrary.Elements;
-using PlaywrightLibrary.Locators;
+﻿using AD.Playwrightlib.Elements;
+using AD.Playwrightlib.Locators;
 
-namespace PlaywrightLibrary.Driver;
+namespace AD.Playwrightlib.Driver;
 
 public interface IElementFindService
 {

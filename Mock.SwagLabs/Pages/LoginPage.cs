@@ -1,12 +1,11 @@
 ﻿using Mock.SwagLabs.Models;
-using Mock.SwagLabs.Sections.Navigationbar;
 
 namespace Mock.SwagLabs.Pages;
 
 public class LoginPage : BasePage
 {
-    public LoginPage(IDriver driver, NavigationbarSection navigationbar) 
-        : base(driver, navigationbar)
+    public LoginPage(IDriver driver) 
+        : base(driver)
     {
 
     }

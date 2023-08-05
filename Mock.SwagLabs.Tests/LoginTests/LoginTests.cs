@@ -1,8 +1,8 @@
 ﻿using Mock.SwagLabs.Models;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Tests.Fixture;
-using PlaywrightLibrary.Configuration;
-using PlaywrightLibrary.Driver;
+using AD.Playwrightlib.Configuration;
+using AD.Playwrightlib.Driver;
 
 namespace Mock.SwagLabs.Tests.LoginTests;
 

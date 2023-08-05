@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AD.Playwrightlib\AD.Playwrightlib.csproj" />
     <ProjectReference Include="..\Mock.SwagLabs\Mock.SwagLabs.csproj" />
-    <ProjectReference Include="..\PlaywrightLibrary\PlaywrightLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

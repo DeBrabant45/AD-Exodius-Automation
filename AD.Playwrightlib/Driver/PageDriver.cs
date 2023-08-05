@@ -1,9 +1,9 @@
-﻿using PlaywrightLibaray.Locators;
-using PlaywrightLibrary.Configuration;
-using PlaywrightLibrary.Elements;
-using PlaywrightLibrary.Locators;
+﻿using AD.Playwrightlib.Locators;
+using AD.Playwrightlib.Configuration;
+using AD.Playwrightlib.Elements;
+using AD.Playwrightlib.Locators;
 
-namespace PlaywrightLibrary.Driver;
+namespace AD.Playwrightlib.Driver;
 
 public class PageDriver : IDriver
 {

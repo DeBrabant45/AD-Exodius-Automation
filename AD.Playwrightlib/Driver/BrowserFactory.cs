@@ -1,6 +1,6 @@
-﻿using PlaywrightLibrary.Configuration;
+﻿using AD.Playwrightlib.Configuration;
 
-namespace PlaywrightLibrary.Driver;
+namespace AD.Playwrightlib.Driver;
 
 public class BrowserFactory : IBrowserFactory
 {

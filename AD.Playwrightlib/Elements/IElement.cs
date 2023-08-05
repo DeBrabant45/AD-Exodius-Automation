@@ -1,4 +1,4 @@
-﻿namespace PlaywrightLibrary.Elements;
+﻿namespace AD.Playwrightlib.Elements;
 
 public interface IElement
 {

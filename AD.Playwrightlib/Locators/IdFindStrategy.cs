@@ -1,4 +1,4 @@
-﻿namespace PlaywrightLibrary.Locators;
+﻿namespace AD.Playwrightlib.Locators;
 
 public class IdFindStrategy : FindStrategy
 {
