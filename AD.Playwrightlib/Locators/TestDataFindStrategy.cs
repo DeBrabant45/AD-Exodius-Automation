@@ -1,6 +1,4 @@
-﻿using AD.Playwrightlib.Locators;
-
-namespace AD.Playwrightlib.Locators;
+﻿namespace AD.Playwrightlib.Locators;
 
 public class TestDataFindStrategy : FindStrategy
 {

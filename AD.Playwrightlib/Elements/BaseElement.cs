@@ -1,6 +1,4 @@
-﻿using Microsoft.Playwright;
-
-namespace AD.Playwrightlib.Elements;
+﻿namespace AD.Playwrightlib.Elements;
 
 public class BaseElement : IElement
 {
@@ -15,7 +13,9 @@ public class BaseElement : IElement
 
     public async Task<string> Text() => await Locator.InnerTextAsync();
 
-    public async Task<bool?> IsEnabled() => await Locator.IsEnabledAsync();
+    public async Task<bool> IsEnabled() => await Locator.IsEnabledAsync();
 
-    public async Task<bool?> IsVisible() => await Locator.IsVisibleAsync();
+    public async Task<bool> IsVisible() => await Locator.IsVisibleAsync();
+
+    public async Task<bool> IsHidden() => await Locator.IsHiddenAsync();
 }

@@ -1,6 +1,6 @@
 ﻿namespace AD.Playwrightlib.Elements;
 
-public class ButtonElement : BaseElement
+public class ButtonElement : BaseElement, IClickable
 {
     public ButtonElement(ILocator locator) : base(locator)
     {

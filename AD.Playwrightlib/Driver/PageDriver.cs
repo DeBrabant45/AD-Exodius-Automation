@@ -1,7 +1,6 @@
 ﻿using AD.Playwrightlib.Locators;
 using AD.Playwrightlib.Configuration;
 using AD.Playwrightlib.Elements;
-using AD.Playwrightlib.Locators;
 
 namespace AD.Playwrightlib.Driver;
 
@@ -50,6 +49,11 @@ public class PageDriver : IDriver
     public TElement FindElementByTestData<TElement>(string testdata) where TElement : IElement
     {
         return Find<TElement>(new TestDataFindStrategy(testdata));
+    }
+
+    public TElement FindElementByClassName<TElement>(string className) where TElement : IElement
+    {
+        return Find<TElement>(new ClassNameFindStrategy(className));
     }
 
     public async Task TakeScreenshotAsync(string fileName)

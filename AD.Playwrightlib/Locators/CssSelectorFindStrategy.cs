@@ -6,5 +6,5 @@ public class CssSelectorFindStrategy : FindStrategy
     {
     }
 
-    public override string Convert() => Value;
+    public override string Convert() => $"css={Value}";
 }

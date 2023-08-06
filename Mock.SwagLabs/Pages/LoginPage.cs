@@ -13,7 +13,7 @@ public class LoginPage : BasePage
     private TextInputElement UserNameTextbox => Driver.FindElementById<TextInputElement>("user-name");
     private TextInputElement PasswordTextbox => Driver.FindElementById<TextInputElement>("password");
     private ButtonElement LoginButton => Driver.FindElementById<ButtonElement>("login-button");
-    private TextInputElement ErrorMessage => Driver.FindElementByTestData<TextInputElement>("error");
+    private LabelElement ErrorMessage => Driver.FindElementByTestData<LabelElement>("error");
 
     public async Task LoginToSwagLabs(Login login)
     {
@@ -22,7 +22,7 @@ public class LoginPage : BasePage
         await LoginButton.Click();
     }
 
-    public async Task<bool> IsErrorMessagePresent() => await ErrorMessage.IsVisible() ?? false;
+    public async Task<bool> IsErrorMessagePresent() => await ErrorMessage.IsVisible();
 
     public async Task<string> ErrorMessageText() => await ErrorMessage.Text();
 }
