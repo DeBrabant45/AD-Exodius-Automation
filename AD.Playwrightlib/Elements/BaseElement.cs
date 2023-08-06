@@ -1,6 +1,6 @@
 ﻿namespace AD.Playwrightlib.Elements;
 
-public class BaseElement : IElement
+public abstract class BaseElement : IElement
 {
     protected ILocator Locator;
 

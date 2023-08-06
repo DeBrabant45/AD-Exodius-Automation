@@ -16,6 +16,7 @@ public class Startup
             .AddScoped<IElementFactory, ElementFactory>()
             .AddScoped<IDriver, PageDriver>()
             .AddScoped<NavigationbarSection>()
+            .AddScoped<InventoryPage>()
             .AddScoped<LoginPage>();
     }
 }

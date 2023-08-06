@@ -14,7 +14,6 @@ public class LoginTests : BaseTestFixture
         LoginPage loginPage) 
         : base(output, driver, settings)
     {
-        Driver.GoToUrl(settings.ApplicationUrl);
         _loginPage = loginPage;
     }
 

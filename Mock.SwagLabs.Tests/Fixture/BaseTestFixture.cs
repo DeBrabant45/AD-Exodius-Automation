@@ -13,6 +13,7 @@ public class BaseTestFixture : XunitContextBase
     {
         Driver = driver;
         Settings = settings;
+        Driver.GoToUrl(settings.ApplicationUrl);
     }
 
     public override void Dispose()
