@@ -12,7 +12,7 @@ public class LoginPage : BasePage
 
     private TextInputElement UserNameTextbox => Driver.FindElementById<TextInputElement>("user-name");
     private TextInputElement PasswordTextbox => Driver.FindElementById<TextInputElement>("password");
-    private ButtonElement LoginButton => Driver.FindElementById<ButtonElement>("login-button");
+    private ButtonElement LoginButton => Driver.FindElementByTestData<ButtonElement>("login-button");
     private LabelElement ErrorMessage => Driver.FindElementByTestData<LabelElement>("error");
 
     public async Task LoginToSwagLabs(Login login)

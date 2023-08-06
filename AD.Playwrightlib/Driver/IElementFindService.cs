@@ -13,7 +13,7 @@ public interface IElementFindService
 
     public TElement FindElementByXPath<TElement>(string xpath) where TElement : IElement;
 
-    public TElement FindElementByTestData<TElement>(string xpath) where TElement : IElement;
+    public TElement FindElementByTestData<TElement>(string testdata) where TElement : IElement;
 
-    public TElement FindElementByClassName<TElement>(string xpath) where TElement : IElement;
+    public TElement FindElementByText<TElement>(string text) where TElement : IElement;
 }

@@ -51,9 +51,9 @@ public class PageDriver : IDriver
         return Find<TElement>(new TestDataFindStrategy(testdata));
     }
 
-    public TElement FindElementByClassName<TElement>(string className) where TElement : IElement
+    public TElement FindElementByText<TElement>(string text) where TElement : IElement
     {
-        return Find<TElement>(new ClassNameFindStrategy(className));
+        return Find<TElement>(new TextFindStrategy(text));
     }
 
     public async Task TakeScreenshotAsync(string fileName)
