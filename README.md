@@ -1,2 +1,2 @@
-# AD-Playwright-library
- Creating a playwright custom library 
+# AD-Exodius-Automation
+ A custom automation library abstracting away playwright
