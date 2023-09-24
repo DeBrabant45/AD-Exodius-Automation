@@ -1,5 +1,5 @@
-﻿using AD.Playwrightlib.Configuration;
-using AD.Playwrightlib.Driver;
+﻿using AD.Exodius.Configuration;
+using AD.Exodius.Driver;
 
 namespace Mock.SwagLabs.Tests.Fixture;
 

@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Sections.Navigationbar;
-using AD.Playwrightlib.Configuration;
-using AD.Playwrightlib.Driver;
+using AD.Exodius.Configuration;
+using AD.Exodius.Driver;
+using Xunit.DependencyInjection;
 
 namespace Mock.SwagLabs.Tests;
 

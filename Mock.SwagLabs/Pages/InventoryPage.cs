@@ -13,7 +13,7 @@ public class InventoryPage : BasePage
         _navigationbar = navigationbar;
     }
 
-    private DropdownElement FilterDropdown => Driver.FindElementByTestData<DropdownElement>("product_sort_container");
+    private SelectElement FilterDropdown => Driver.FindElementByTestData<SelectElement>("product_sort_container");
 
     public async Task SetFilter(Inventory inventory)
     {

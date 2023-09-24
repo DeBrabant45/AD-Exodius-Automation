@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mock.SwagLabs.Tests", "Mock
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mock.SwagLabs", "Mock.SwagLabs\Mock.SwagLabs.csproj", "{3FEF621B-D940-4578-B896-DA3A8D41C286}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AD.Playwrightlib", "AD.Playwrightlib\AD.Playwrightlib.csproj", "{BA8D9574-E614-4550-887D-105B5C947330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AD.Exodius", "AD.Exodius\AD.Exodius.csproj", "{A3736DEE-C1E3-47F9-9245-914875DCF827}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{3FEF621B-D940-4578-B896-DA3A8D41C286}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FEF621B-D940-4578-B896-DA3A8D41C286}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FEF621B-D940-4578-B896-DA3A8D41C286}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA8D9574-E614-4550-887D-105B5C947330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA8D9574-E614-4550-887D-105B5C947330}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA8D9574-E614-4550-887D-105B5C947330}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA8D9574-E614-4550-887D-105B5C947330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3736DEE-C1E3-47F9-9245-914875DCF827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3736DEE-C1E3-47F9-9245-914875DCF827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3736DEE-C1E3-47F9-9245-914875DCF827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3736DEE-C1E3-47F9-9245-914875DCF827}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

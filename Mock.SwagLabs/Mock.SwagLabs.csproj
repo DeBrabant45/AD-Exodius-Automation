@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AD.Playwrightlib\AD.Playwrightlib.csproj" />
+    <Folder Include="Facades\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AD.Exodius\AD.Exodius.csproj" />
   </ItemGroup>
 
 </Project>

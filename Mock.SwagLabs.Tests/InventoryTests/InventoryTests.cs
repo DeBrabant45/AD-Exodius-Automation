@@ -1,5 +1,5 @@
-﻿using AD.Playwrightlib.Configuration;
-using AD.Playwrightlib.Driver;
+﻿using AD.Exodius.Configuration;
+using AD.Exodius.Driver;
 using Mock.SwagLabs.Models;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Tests.Fixture;

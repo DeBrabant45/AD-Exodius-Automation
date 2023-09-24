@@ -1,8 +1,8 @@
-﻿using Mock.SwagLabs.Models;
+﻿using AD.Exodius.Configuration;
+using AD.Exodius.Driver;
+using Mock.SwagLabs.Models;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Tests.Fixture;
-using AD.Playwrightlib.Configuration;
-using AD.Playwrightlib.Driver;
 
 namespace Mock.SwagLabs.Tests.LoginTests;
 
@@ -28,6 +28,34 @@ public class LoginTests : BaseTestFixture
         var actualResult = await _loginPage.IsErrorMessagePresent();
         Assert.False(actualResult);
     }
+
+
+    [Theory]
+    [InlineData("standard_user", "secret_sauce")]
+    [InlineData("performance_glitch_user", "secret_sauce")]
+    [InlineData("problem_user", "secret_sauce")]
+    public async Task User_Should_Login_Without_Errors2(string username, string password)
+    {
+        var login = new Login { Username = username, Password = password };
+        await _loginPage.LoginToSwagLabs(login);
+        var actualResult = await _loginPage.IsErrorMessagePresent();
+        Assert.False(actualResult);
+    }
+
+
+
+    [Theory]
+    [InlineData("standard_user", "secret_sauce")]
+    [InlineData("performance_glitch_user", "secret_sauce")]
+    [InlineData("problem_user", "secret_sauce")]
+    public async Task User_Should_Login_Without_Errors3(string username, string password)
+    {
+        var login = new Login { Username = username, Password = password };
+        await _loginPage.LoginToSwagLabs(login);
+        var actualResult = await _loginPage.IsErrorMessagePresent();
+        Assert.False(actualResult);
+    }
+
 
     [Theory, AutoData]
     public async Task User_Should_See_Login_Error_Message(Login login)

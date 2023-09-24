@@ -8,11 +8,11 @@ public class NavigationbarSection : BaseSection
     }
 
     private ButtonElement BurgerMenuButton => Driver.FindElementById<ButtonElement>("react-burger-menu-btn");
-    private AchorElement AllItemsAchor => Driver.FindElementById<AchorElement>("inventory_sidebar_link");
-    private AchorElement AboutAchor => Driver.FindElementById<AchorElement>("about_sidebar_link");
-    private AchorElement LogoutAchor => Driver.FindElementById<AchorElement>("logout_sidebar_link");
-    private AchorElement ResetAppStateAchor => Driver.FindElementById<AchorElement>("reset_sidebar_link");
-    private AchorElement ShoppingCartAchor => Driver.FindElementById<AchorElement>("shopping_cart_container");
+    private AnchorElement AllItemsAchor => Driver.FindElementById<AnchorElement>("inventory_sidebar_link");
+    private AnchorElement AboutAchor => Driver.FindElementById<AnchorElement>("about_sidebar_link");
+    private AnchorElement LogoutAchor => Driver.FindElementById<AnchorElement>("logout_sidebar_link");
+    private AnchorElement ResetAppStateAchor => Driver.FindElementById<AnchorElement>("reset_sidebar_link");
+    private AnchorElement ShoppingCartAchor => Driver.FindElementById<AnchorElement>("shopping_cart_container");
 
     public async Task GoToAllItems()
     {
