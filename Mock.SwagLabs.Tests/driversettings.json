@@ -1,0 +1,24 @@
+﻿{
+  "BrowserSettings": {
+    "Browser": "Chrome",
+    "Headless": true,
+    "SlowMotion": 0.5,
+    "Timeout": 30
+  },
+  "ContextSettings": {
+    "StorageStatePath": "savedstate.json",
+    "UseSavedState": true,
+    "ViewportSize": {
+      "Height": 1080,
+      "Width": 1920
+    }
+  },
+  "TraceSettings": {
+    "IsTraceEnabled": false,
+    "Screenshots": true,
+    "Snapshots": true,
+    "Sources": true,
+    "CaptureType": "Failure",
+    "FileStoragePath": "test-results"
+  }
+}

@@ -1,4 +1,6 @@
-﻿namespace Mock.SwagLabs.Sections.Navigationbar;
+﻿using AD.Exodius.Locators;
+
+namespace Mock.SwagLabs.Sections.Navigationbar;
 
 public class NavigationbarSection : BaseSection
 {
@@ -7,12 +9,12 @@ public class NavigationbarSection : BaseSection
 
     }
 
-    private ButtonElement BurgerMenuButton => Driver.FindElementById<ButtonElement>("react-burger-menu-btn");
-    private AnchorElement AllItemsAchor => Driver.FindElementById<AnchorElement>("inventory_sidebar_link");
-    private AnchorElement AboutAchor => Driver.FindElementById<AnchorElement>("about_sidebar_link");
-    private AnchorElement LogoutAchor => Driver.FindElementById<AnchorElement>("logout_sidebar_link");
-    private AnchorElement ResetAppStateAchor => Driver.FindElementById<AnchorElement>("reset_sidebar_link");
-    private AnchorElement ShoppingCartAchor => Driver.FindElementById<AnchorElement>("shopping_cart_container");
+    private ButtonElement BurgerMenuButton => Driver.FindElement<ById, ButtonElement>("react-burger-menu-btn");
+    private AnchorElement AllItemsAchor => Driver.FindElement<ById, AnchorElement>("inventory_sidebar_link");
+    private AnchorElement AboutAchor => Driver.FindElement<ById, AnchorElement>("about_sidebar_link");
+    private AnchorElement LogoutAchor => Driver.FindElement<ById, AnchorElement>("logout_sidebar_link");
+    private AnchorElement ResetAppStateAchor => Driver.FindElement<ById, AnchorElement>("reset_sidebar_link");
+    private AnchorElement ShoppingCartAchor => Driver.FindElement<ById, AnchorElement>("shopping_cart_container");
 
     public async Task GoToAllItems()
     {

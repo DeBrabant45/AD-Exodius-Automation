@@ -1,6 +1,6 @@
 ﻿namespace AD.Exodius.Elements;
 
-public class RadioButtonElement : BaseElement, IClickElement
+public class RadioButtonElement : BaseClickElement
 {
     public RadioButtonElement(ILocator locator) 
         : base(locator)
@@ -8,36 +8,20 @@ public class RadioButtonElement : BaseElement, IClickElement
 
     }
 
-    public async Task Click()
+    public override async Task Click()
     {
         if (await Locator.IsCheckedAsync())
             return;
 
-        await Locator.ClickAsync(new() { Force = true });
+        await Locator.ClickAsync();
     }
 
-    public async Task Click(bool shouldClick)
-    {
-        if (!shouldClick)
-            return;
-
-        await Click();
-    }
-
-    public async Task ForceClick()
+    public override async Task ForceClick()
     {
         if (await Locator.IsCheckedAsync())
             return;
 
         await Focus();
         await Locator.ClickAsync(new() { Force = true });
-    }
-
-    public async Task ForceClick(bool shouldForceClick)
-    {
-        if (!shouldForceClick)
-            return;
-
-        await ForceClick();
     }
 }

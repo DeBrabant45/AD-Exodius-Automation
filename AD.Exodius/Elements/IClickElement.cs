@@ -6,4 +6,5 @@ public interface IClickElement
     public Task Click(bool shouldClick);
     public Task ForceClick();
     public Task ForceClick(bool shouldForceClick);
+    public Task NoHoverClick();
 }

@@ -1,6 +1,6 @@
 ﻿namespace AD.Exodius.Elements;
 
-public class ImageElement : BaseElement, IClickElement
+public class ImageElement : BaseClickElement
 {
     public ImageElement(ILocator locator) 
         : base(locator)
@@ -8,35 +8,11 @@ public class ImageElement : BaseElement, IClickElement
 
     }
 
-    public async Task<string> AltText() => await Locator.GetAttributeAsync("alt") ?? "";
+    public async Task<string> FindAltText() => await Locator.GetAttributeAsync("alt") ?? "";
 
-    public async Task<string> Src() => await Locator.GetAttributeAsync("src") ?? "";
+    public async Task<string> FindSrc() => await Locator.GetAttributeAsync("src") ?? "";
 
-    public async Task DoubleClick() => await Locator.DblClickAsync();
+    public async Task<bool> IsDataIconPresent(string iconName) => await IsAttributePresent("data-icon", iconName);
 
-    public async Task Click() => await Locator.ClickAsync();
-
-    public async Task Click(int index) => await Locator.Nth(index).ClickAsync();
-
-    public async Task ForceClick()
-    {
-        await Focus();
-        await Locator.ClearAsync(new() { Force = true });
-    }
-
-    public async Task Click(bool shouldClick)
-    {
-        if (!shouldClick)
-            return;
-
-        await Click();
-    }
-
-    public async Task ForceClick(bool shouldClick)
-    {
-        if (!shouldClick)
-            return;
-
-        await ForceClick();
-    }
+    public virtual async Task Click(int index) => await Locator.Nth(index).ClickAsync();
 }

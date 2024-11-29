@@ -1,20 +1,28 @@
-﻿using AD.Exodius.Configuration;
-using AD.Exodius.Driver;
-using Mock.SwagLabs.Models;
+﻿using AD.Exodius.Driver;
+using AD.Exodius.Navigators;
+using AD.Exodius.Navigators.Strategies;
+using AD.Exodius.Utility.Tasks;
+using FluentAssertions;
+using Mock.SwagLabs.Configurations.Models;
 using Mock.SwagLabs.Pages;
-using Mock.SwagLabs.Tests.Fixture;
+using Mock.SwagLabs.Pages.Models;
+using Mock.SwagLabs.Tests.Fixtures;
+using Xunit.Abstractions;
 
 namespace Mock.SwagLabs.Tests.LoginTests;
 
 public class LoginTests : BaseTestFixture
 {
-    private readonly LoginPage _loginPage;
+    private readonly INavigator _navigator;
 
-    public LoginTests(ITestOutputHelper output, IDriver driver, TestSettings settings, 
-        LoginPage loginPage) 
+    public LoginTests(
+        ITestOutputHelper output,
+        IDriver driver,
+        TestSettings settings,
+        INavigator navigator)
         : base(output, driver, settings)
     {
-        _loginPage = loginPage;
+        _navigator = navigator;
     }
 
     [Theory]
@@ -24,46 +32,24 @@ public class LoginTests : BaseTestFixture
     public async Task User_Should_Login_Without_Errors(string username, string password)
     {
         var login = new Login { Username = username, Password = password };
-        await _loginPage.LoginToSwagLabs(login);
-        var actualResult = await _loginPage.IsErrorMessagePresent();
-        Assert.False(actualResult);
+
+        var isLoginPageErrorMessagePresent = await _navigator
+            .GoTo<LoginPage, ByRoute>()
+            .Then(page => page.Login(login))
+            .Then(page => page.IsErrorMessagePresent());
+
+        isLoginPageErrorMessagePresent.Should().BeFalse();
     }
-
-
-    [Theory]
-    [InlineData("standard_user", "secret_sauce")]
-    [InlineData("performance_glitch_user", "secret_sauce")]
-    [InlineData("problem_user", "secret_sauce")]
-    public async Task User_Should_Login_Without_Errors2(string username, string password)
-    {
-        var login = new Login { Username = username, Password = password };
-        await _loginPage.LoginToSwagLabs(login);
-        var actualResult = await _loginPage.IsErrorMessagePresent();
-        Assert.False(actualResult);
-    }
-
-
-
-    [Theory]
-    [InlineData("standard_user", "secret_sauce")]
-    [InlineData("performance_glitch_user", "secret_sauce")]
-    [InlineData("problem_user", "secret_sauce")]
-    public async Task User_Should_Login_Without_Errors3(string username, string password)
-    {
-        var login = new Login { Username = username, Password = password };
-        await _loginPage.LoginToSwagLabs(login);
-        var actualResult = await _loginPage.IsErrorMessagePresent();
-        Assert.False(actualResult);
-    }
-
 
     [Theory, AutoData]
     public async Task User_Should_See_Login_Error_Message(Login login)
     {
-        await _loginPage.LoginToSwagLabs(login);
-        var actualResult = await _loginPage.ErrorMessageText();
-        var expectedResult = "Epic sadface: Username and password do not match any user in this service";
-        Assert.Equal(expectedResult, actualResult);
+        var loginPageErrorMessage = await _navigator
+            .GoTo<LoginPage, ByRoute>()
+            .Then(page => page.Login(login))
+            .Then(page => page.GetErrorMessageText());
+
+        loginPageErrorMessage.Should().Be("Epic sadface: Username and password do not match any user in this service");
     }
 
     [Theory]
@@ -71,9 +57,12 @@ public class LoginTests : BaseTestFixture
     public async Task User_Should_See_Login_Locked_Out_Error_Message(string username, string password)
     {
         var login = new Login { Username = username, Password = password };
-        await _loginPage.LoginToSwagLabs(login);
-        var actualResult = await _loginPage.ErrorMessageText();
-        var expectedResult = "Epic sadface: Sorry, this user has been locked out.";
-        Assert.Equal(expectedResult, actualResult);
+
+        var loginPageErrorMessage = await _navigator
+            .GoTo<LoginPage, ByRoute>()
+            .Then(page => page.Login(login))
+            .Then(page => page.GetErrorMessageText());
+
+        loginPageErrorMessage.Should().Be("Epic sadface: Sorry, this user has been locked out.");
     }
 }
