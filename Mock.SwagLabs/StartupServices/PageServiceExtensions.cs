@@ -8,7 +8,9 @@ public static class PageServiceExtensions
 {
     public static IServiceCollection AddPageServices(this IServiceCollection service)
     {
-        service.AddScoped<IPageObject, LoginPage>();
+        service
+            .AddScoped<IPageObject, LoginPage>()
+            .AddScoped<IPageObject, ProductsPage>();
 
         return service;
     }

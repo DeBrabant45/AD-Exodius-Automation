@@ -9,7 +9,9 @@ public static class PageComponentServiceExtensions
     public static IServiceCollection AddPageComponentServices(this IServiceCollection services)
     {
         services
-            .AddScoped<IWaitSection, WaitSection>();
+            .AddScoped<IWaitSection, WaitSection>()
+            .AddScoped<IProductSortSection, ProductSortSection>()
+            .AddScoped<IInventorySection, InventorySection>();
 
         return services;
     }

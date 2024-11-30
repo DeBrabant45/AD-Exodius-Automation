@@ -15,4 +15,10 @@ public class ApplicationSettings
     public List<DBConnection> DBConnections { get; set; } = [];
 
     public required List<User> Users { get; set; }
+
+    public User GetFirstUser()
+    {
+        return Users.FirstOrDefault() 
+            ?? throw new InvalidOperationException("No users supplied within the application settings!");
+    }
 }
