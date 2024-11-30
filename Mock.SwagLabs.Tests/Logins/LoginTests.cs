@@ -2,14 +2,12 @@
 using AD.Exodius.Navigators;
 using AD.Exodius.Navigators.Strategies;
 using AD.Exodius.Utility.Tasks;
-using FluentAssertions;
 using Mock.SwagLabs.Configurations.Models;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Pages.Models;
 using Mock.SwagLabs.Tests.Fixtures;
-using Xunit.Abstractions;
 
-namespace Mock.SwagLabs.Tests.LoginTests;
+namespace Mock.SwagLabs.Tests.Logins;
 
 public class LoginTests : BaseTestFixture
 {

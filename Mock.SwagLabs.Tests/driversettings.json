@@ -1,7 +1,7 @@
 ﻿{
   "BrowserSettings": {
     "Browser": "Chrome",
-    "Headless": true,
+    "Headless": false,
     "SlowMotion": 0.5,
     "Timeout": 30
   },
