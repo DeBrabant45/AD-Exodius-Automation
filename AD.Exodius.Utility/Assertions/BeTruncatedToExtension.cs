@@ -7,7 +7,11 @@ namespace AD.Exodius.Utility.Assertions;
 public static class BeTruncatedToExtension
 {
     public static AndConstraint<NumericAssertions<double>> BeTruncatedTo(
-    this NumericAssertions<double> assertions, double expected, int decimalPlaces = 1, string because = "", params object[] becauseArgs)
+        this NumericAssertions<double> assertions, 
+        double expected, 
+        int decimalPlaces = 1, 
+        string because = "", 
+        params object[] becauseArgs)
     {
         if (!assertions.Subject.HasValue)
         {
