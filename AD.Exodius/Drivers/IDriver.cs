@@ -1,6 +1,6 @@
-﻿using AD.Exodius.Driver.Services;
+﻿using AD.Exodius.Drivers.Services;
 
-namespace AD.Exodius.Driver;
+namespace AD.Exodius.Drivers;
 
 /// <summary>
 /// Represents a driver interface for interacting with web pages.

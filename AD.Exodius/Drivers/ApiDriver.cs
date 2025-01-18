@@ -1,4 +1,4 @@
-﻿namespace AD.Exodius.Driver;
+﻿namespace AD.Exodius.Drivers;
 
 public class ApiDriver
 {

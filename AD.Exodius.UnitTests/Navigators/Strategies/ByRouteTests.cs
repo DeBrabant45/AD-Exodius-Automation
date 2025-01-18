@@ -1,7 +1,7 @@
 ﻿using NSubstitute;
-using AD.Exodius.Driver;
 using AD.Exodius.Navigators.Strategies;
 using AD.Exodius.UnitTests.Stubs.PageObjects;
+using AD.Exodius.Drivers;
 
 namespace AD.Exodius.UnitTests.Navigators.Strategies;
 

@@ -1,5 +1,5 @@
 ﻿using AD.Exodius.Configurations;
-using AD.Exodius.Driver;
+using AD.Exodius.Drivers;
 using Mock.SwagLabs.Configurations.Models;
 using Xunit.Abstractions;
 

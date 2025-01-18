@@ -1,6 +1,6 @@
 ﻿using AD.Exodius.Networks;
 
-namespace AD.Exodius.Driver.Factories;
+namespace AD.Exodius.Drivers.Factories;
 
 /// <summary>
 /// Represents a factory for creating network response instances.

@@ -1,6 +1,7 @@
 ﻿using AD.Exodius.Configurations;
+using AD.Exodius.Drivers;
 
-namespace AD.Exodius.Driver.Factories;
+namespace AD.Exodius.Drivers.Factories;
 
 /// <summary>
 /// Factory class responsible for encapsulating the creation of <see cref="IDriver"/> instances and its dependencies.

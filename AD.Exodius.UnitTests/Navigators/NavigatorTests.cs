@@ -1,6 +1,5 @@
 ﻿using NSubstitute;
 using AD.Exodius.Components;
-using AD.Exodius.Driver;
 using AD.Exodius.Navigators;
 using AD.Exodius.Navigators.Actions;
 using AD.Exodius.Navigators.Factories;
@@ -11,6 +10,7 @@ using AD.Exodius.Pages.Factories;
 using AD.Exodius.UnitTests.Stubs.Navigators.Actions;
 using AD.Exodius.UnitTests.Stubs.Navigators.Strategies;
 using AD.Exodius.UnitTests.Stubs.PageObjects;
+using AD.Exodius.Drivers;
 
 namespace AD.Exodius.UnitTests.Navigators;
 

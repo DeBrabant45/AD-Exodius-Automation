@@ -1,12 +1,13 @@
 ﻿using Serilog;
 using AD.Exodius.Configurations;
-using AD.Exodius.Driver.Factories;
 using AD.Exodius.Elements;
 using AD.Exodius.Helpers;
 using AD.Exodius.Locators;
 using AD.Exodius.Networks;
+using AD.Exodius.Drivers.Factories;
+using AD.Exodius.Drivers.Enums;
 
-namespace AD.Exodius.Driver;
+namespace AD.Exodius.Drivers;
 
 public class PageDriver : IDriver, IDisposable
 {
@@ -25,8 +26,8 @@ public class PageDriver : IDriver, IDisposable
         IPageFactory pageFactory,
         ILocatorStrategyFactory locatorStrategyFactory,
         IBrowserFactory browserFactory,
-        IElementFactory elementFactory, 
-        INetworkResponseFactory responseFactory, 
+        IElementFactory elementFactory,
+        INetworkResponseFactory responseFactory,
         DriverSettings settings,
         IPathResolver pathResolver)
     {
@@ -54,9 +55,60 @@ public class PageDriver : IDriver, IDisposable
         _playwright = await Playwright.CreateAsync();
     }
 
-    public async Task GoToUrl(string url)
+    public async Task GoToUrl(string url, ErrorBehavior errorBehavior = ErrorBehavior.ThrowException)
     {
-        await _page.GotoAsync(url);
+        try
+        {
+            await _page.GotoAsync(url);
+        }
+        catch (PlaywrightException) when (errorBehavior == ErrorBehavior.ThrowException)
+        {
+            throw;
+        }
+        catch (PlaywrightException ex) when (errorBehavior == ErrorBehavior.LogException)
+        {
+            Console.WriteLine($"Error navigating to {url}: {ex.Message}");
+        }
+    }
+
+    public async Task GoToUrl(IEnumerable<string> urls)
+    {
+        foreach (var currentUrl in urls)
+        {
+            try
+            {
+                await _page.GotoAsync(currentUrl);
+                await WaitForNetworkIdle(5, ErrorBehavior.LogException);
+
+                if (CurrentUrl().Contains(currentUrl))
+                    return;
+            }
+            catch (PlaywrightException ex)
+            {
+                await WaitForNetworkIdle(5, ErrorBehavior.LogException);
+
+                Console.WriteLine($"Failed to navigate to {currentUrl}: {ex.Message}");
+            }
+        }
+
+        throw new InvalidOperationException(
+            $"Unable to navigate to any of the provided URLs: {string.Join(", ", urls)}.");
+    }
+
+    private async Task WaitForNetworkIdle(int timeoutInSeconds, ErrorBehavior errorBehavior)
+    {
+        try
+        {
+            await _page.WaitForLoadStateAsync(LoadState.NetworkIdle, new() { Timeout = timeoutInSeconds * 1000 });
+        }
+        catch (TimeoutException) when (errorBehavior == ErrorBehavior.ThrowException)
+        {
+            throw;
+        }
+        catch (TimeoutException ex) when (errorBehavior == ErrorBehavior.LogException)
+        {
+            Console.WriteLine($"Timeout while waiting for network to become idle.: {ex.Message}");
+        }
     }
 
     public async Task ClosePage()
@@ -125,7 +177,7 @@ public class PageDriver : IDriver, IDisposable
 
     public void SwitchToPage(int index)
     {
-        _page = _page.Context.Pages[index]; 
+        _page = _page.Context.Pages[index];
     }
 
     public void SwitchToDefaultPage()
@@ -250,7 +302,7 @@ public class PageDriver : IDriver, IDisposable
             {
                 Name = "token",
                 Value = tokenAccess,
-                Domain = new Uri(baseUrl).Host, 
+                Domain = new Uri(baseUrl).Host,
                 Path = "/",
                 Secure = true,
                 HttpOnly = true

@@ -1,7 +1,7 @@
 ﻿using AD.Exodius.Configurations;
 using AD.Exodius.Helpers;
 
-namespace AD.Exodius.Driver.Factories;
+namespace AD.Exodius.Drivers.Factories;
 
 public class PageFactory : IPageFactory
 {

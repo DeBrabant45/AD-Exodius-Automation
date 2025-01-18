@@ -1,4 +1,4 @@
-﻿namespace AD.Exodius.Driver.Factories;
+﻿namespace AD.Exodius.Drivers.Factories;
 
 /// <summary>
 /// Represents a factory for creating page instances.

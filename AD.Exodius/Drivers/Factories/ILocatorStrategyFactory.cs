@@ -1,6 +1,6 @@
 ﻿using AD.Exodius.Locators;
 
-namespace AD.Exodius.Driver.Factories;
+namespace AD.Exodius.Drivers.Factories;
 
 /// <summary>
 /// Represents a factory for creating locator strategies.

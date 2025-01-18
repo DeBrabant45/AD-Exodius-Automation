@@ -1,4 +1,4 @@
-﻿namespace AD.Exodius.Driver.Factories;
+﻿namespace AD.Exodius.Drivers.Factories;
 
 /// <summary>
 /// Represents a factory for creating instances of Playwright.
@@ -20,7 +20,7 @@ public class PlaywrightFactory
     {
         if (_playwrightInstance != null)
             return _playwrightInstance;
-       
+
         return _playwrightInstance = Playwright.CreateAsync().GetAwaiter().GetResult();
     }
 }

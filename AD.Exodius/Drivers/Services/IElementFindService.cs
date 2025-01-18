@@ -1,7 +1,7 @@
 ﻿using AD.Exodius.Elements;
 using AD.Exodius.Locators;
 
-namespace AD.Exodius.Driver.Services;
+namespace AD.Exodius.Drivers.Services;
 
 /// <summary>
 /// Represents a service for finding elements on a web page.

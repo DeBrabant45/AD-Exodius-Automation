@@ -1,6 +1,6 @@
 ﻿using AD.Exodius.Elements;
 
-namespace AD.Exodius.Driver.Services;
+namespace AD.Exodius.Drivers.Services;
 
 /// <summary>
 /// Represents a service for waiting for page events.

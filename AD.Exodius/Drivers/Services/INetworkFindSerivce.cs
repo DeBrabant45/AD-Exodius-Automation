@@ -1,6 +1,6 @@
 ﻿using AD.Exodius.Networks;
 
-namespace AD.Exodius.Driver.Services;
+namespace AD.Exodius.Drivers.Services;
 
 /// <summary>
 /// Represents a service for finding network responses.

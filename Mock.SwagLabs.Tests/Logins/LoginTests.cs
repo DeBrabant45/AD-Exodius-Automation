@@ -1,4 +1,4 @@
-﻿using AD.Exodius.Driver;
+﻿using AD.Exodius.Drivers;
 using AD.Exodius.Navigators;
 using AD.Exodius.Navigators.Strategies;
 using AD.Exodius.Utility.Tasks;
@@ -36,7 +36,9 @@ public class LoginTests : BaseTestFixture
             .Then(page => page.Login(login))
             .Then(page => page.IsErrorMessagePresent());
 
-        isLoginPageErrorMessagePresent.Should().BeFalse();
+        isLoginPageErrorMessagePresent
+            .Should()
+            .BeFalse();
     }
 
     [Theory, AutoData]
@@ -61,6 +63,8 @@ public class LoginTests : BaseTestFixture
             .Then(page => page.Login(login))
             .Then(page => page.GetErrorMessageText());
 
-        loginPageErrorMessage.Should().Be("Epic sadface: Sorry, this user has been locked out.");
+        loginPageErrorMessage
+            .Should()
+            .Be("Epic sadface: Sorry, this user has been locked out.");
     }
 }

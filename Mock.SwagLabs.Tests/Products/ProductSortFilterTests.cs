@@ -1,4 +1,4 @@
-﻿using AD.Exodius.Driver;
+﻿using AD.Exodius.Drivers;
 using AD.Exodius.Navigators;
 using AD.Exodius.Navigators.Strategies;
 using AD.Exodius.Utility.Assertions;
@@ -41,7 +41,9 @@ public class ProductSortFilterTests : BypassLoginFixture
             .GetComponent<IInventorySection>()
             .Then(component => component.GetAllItemNamesInOrder());
 
-        allItemNames.Should().BeInOrder(expectedSortOrder);
+        allItemNames
+            .Should()
+            .BeInOrder(expectedSortOrder);
     }
 
     [Theory]
@@ -62,6 +64,8 @@ public class ProductSortFilterTests : BypassLoginFixture
             .GetComponent<IInventorySection>()
             .Then(component => component.GetAllPricesInOrder<decimal>());
 
-        allItemPrices.Should().BeInOrder(expectedSortOrder);
+        allItemPrices
+            .Should()
+            .BeInOrder(expectedSortOrder);
     }
 }

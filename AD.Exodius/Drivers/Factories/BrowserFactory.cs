@@ -1,6 +1,6 @@
 ﻿using AD.Exodius.Configurations;
 
-namespace AD.Exodius.Driver.Factories;
+namespace AD.Exodius.Drivers.Factories;
 
 public class BrowserFactory : IBrowserFactory
 {

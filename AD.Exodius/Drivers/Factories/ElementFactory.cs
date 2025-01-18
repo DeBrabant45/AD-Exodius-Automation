@@ -1,6 +1,6 @@
 ﻿using AD.Exodius.Elements;
 
-namespace AD.Exodius.Driver.Factories;
+namespace AD.Exodius.Drivers.Factories;
 
 public class ElementFactory : IElementFactory
 {

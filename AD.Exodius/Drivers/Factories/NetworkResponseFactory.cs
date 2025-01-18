@@ -1,6 +1,6 @@
 ﻿using AD.Exodius.Networks;
 
-namespace AD.Exodius.Driver.Factories;
+namespace AD.Exodius.Drivers.Factories;
 
 public class NetworkResponseFactory : INetworkResponseFactory
 {
