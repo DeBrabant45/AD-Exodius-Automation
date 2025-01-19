@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using AD.Exodius.Configurations;
+﻿using AD.Exodius.Configurations;
 using AD.Exodius.Drivers.Factories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AD.Exodius.StartupServices.Drivers;
 

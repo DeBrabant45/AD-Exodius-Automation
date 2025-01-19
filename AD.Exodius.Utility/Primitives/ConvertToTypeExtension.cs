@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-using AD.Exodius.Utility.Helpers;
+﻿using AD.Exodius.Utility.Helpers;
+using System.Globalization;
 
 namespace AD.Exodius.Utility.Primitives;
 

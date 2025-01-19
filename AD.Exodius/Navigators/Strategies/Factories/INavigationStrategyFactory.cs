@@ -1,6 +1,4 @@
-﻿using AD.Exodius.Navigators.Strategies;
-
-namespace AD.Exodius.Navigators.Factories;
+﻿namespace AD.Exodius.Navigators.Strategies.Factories;
 
 /// <summary>
 /// Defines a factory for creating navigation strategy instances.

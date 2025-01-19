@@ -1,12 +1,15 @@
-﻿using System.Diagnostics;
-using AD.Exodius.Components;
+﻿using AD.Exodius.Components;
+using AD.Exodius.Drivers;
+using AD.Exodius.Registries;
 
 namespace AD.Exodius.UnitTests.Stubs.Components;
 
-public class StubLazyPageComponent : ILazyPageComponent
+public class StubLazyPageComponent(IDriver driver, IPageComponentRegistry owner) : LazyPageComponent(driver, owner)
 {
-    public void Initialize()
+    public bool IsInitialized { get; private set; }
+
+    public override void Initialize()
     {
-        Debug.WriteLine("We ran for tests");
+        IsInitialized = true;
     }
 }

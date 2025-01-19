@@ -1,7 +1,7 @@
-﻿using AD.Exodius.Drivers;
-using AD.Exodius.Locators;
+﻿using AD.Exodius.Locators;
 using AD.Exodius.Pages;
 using AD.Exodius.Pages.Attributes;
+using Mock.SwagLabs.Components.Sections;
 using Mock.SwagLabs.Pages.Models;
 
 namespace Mock.SwagLabs.Pages;
@@ -12,7 +12,7 @@ public class LoginPage : PageObject
     public LoginPage(IDriver driver) 
         : base(driver)
     {
-
+        AddComponent<WaitSection>();
     }
 
     private TextInputElement UserNameTextbox => Driver.FindElement<ById,TextInputElement>("user-name");

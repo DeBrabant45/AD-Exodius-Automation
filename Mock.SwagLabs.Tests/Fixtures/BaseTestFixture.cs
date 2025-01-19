@@ -1,28 +1,34 @@
 ﻿using AD.Exodius.Configurations;
 using AD.Exodius.Drivers;
+using AD.Exodius.Navigators;
+using AD.Exodius.Navigators.Factories;
+using Microsoft.Extensions.DependencyInjection;
 using Mock.SwagLabs.Configurations.Models;
-using Xunit.Abstractions;
 
 namespace Mock.SwagLabs.Tests.Fixtures;
 
 public class BaseTestFixture : IAsyncLifetime
 {
     protected readonly IDriver Driver;
+    protected readonly INavigator Navigator;
     protected readonly TestSettings Settings;
     protected readonly ITestOutputHelper Output;
-    protected readonly ApplicationSettings ApplicationSettings;
     protected readonly DriverSettings DriverSettings;
+    protected readonly IServiceProvider ServiceProvider;
+    protected readonly ApplicationSettings ApplicationSettings;
 
-    public BaseTestFixture(
-        ITestOutputHelper output, 
-        IDriver driver, 
-        TestSettings settings)
+    public BaseTestFixture(ITestOutputHelper output)
     {
         Output = output;
-        Driver = driver;
-        Settings = settings;
-        ApplicationSettings = settings.ApplicationSettings;
-        DriverSettings = settings.DriverSettings;
+        ServiceProvider = ServiceCollectionProvider.ServiceProvider;
+        Settings = ServiceProvider.GetRequiredService<TestSettings>();
+        Driver = ServiceProvider.GetRequiredService<IDriver>();
+        ApplicationSettings = Settings.ApplicationSettings;
+        DriverSettings = Settings.DriverSettings;
+
+        Navigator = ServiceProvider
+            .GetRequiredService<INavigatorFactory>()
+            .Create<Navigator>(Driver);
     }
 
     public async Task InitializeAsync()

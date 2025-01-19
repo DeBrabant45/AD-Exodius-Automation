@@ -10,7 +10,4 @@
 /// is represented as an individual component.
 /// </remarks>
 /// <author>Aaron DeBrabant</author>
-public interface IPageComponent
-{
-
-}
+public interface IPageComponent {  }

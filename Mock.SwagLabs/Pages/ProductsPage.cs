@@ -1,23 +1,22 @@
-﻿using AD.Exodius.Components.Factories;
-using AD.Exodius.Drivers;
-using AD.Exodius.Pages;
+﻿using AD.Exodius.Pages;
 using AD.Exodius.Pages.Attributes;
 using Mock.SwagLabs.Components.Sections;
 
 namespace Mock.SwagLabs.Pages;
 
-[PageObjectRoute("/inventory.html")]
+[PageObjectMeta(
+    Route = "/inventory.html",
+    Name = "Products",
+    DomId = "inventory-sidebar-link"
+)]
 public class ProductsPage : PageObject
 {
-    public ProductsPage(
-        IDriver driver,
-        IPageComponentFactory componentFactory) 
+    public ProductsPage(IDriver driver)
         : base(driver)
     {
-        AddComponents(
-        [
-            componentFactory.Create<IProductSortSection>(),
-            componentFactory.Create<IInventorySection>(),
-        ]);
+        AddComponent<WaitSection>();
+        AddComponent<ProductSortSection>();
+        AddComponent<InventorySection>();
+        AddComponent<NavigationActionComponent>();
     }
 }

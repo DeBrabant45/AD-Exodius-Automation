@@ -6,6 +6,9 @@ public class ElementFactory : IElementFactory
 {
     public TElement Create<TElement>(ILocator locator) where TElement : IElement
     {
-        return (TElement)Activator.CreateInstance(typeof(TElement), locator);
+        var instance = Activator.CreateInstance(typeof(TElement), locator)
+            ?? throw new InvalidOperationException($"Failed to create an instance of {typeof(TElement).Name}.");
+
+        return (TElement)instance;
     }
 }

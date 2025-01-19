@@ -1,22 +1,18 @@
-﻿namespace AD.Exodius.Components.Factories;
+﻿using AD.Exodius.Drivers;
+using AD.Exodius.Registries;
 
-public class PageComponentFactory : IPageComponentFactory
+namespace AD.Exodius.Components.Factories;
+
+public class PageComponentFactory 
 {
-    private readonly HashSet<IPageComponent> _pageComponents;
-
-    public PageComponentFactory(IEnumerable<IPageComponent> pageComponents)
+    public static TPageComponent Create<TPageComponent>(IDriver driver, IPageComponentRegistry owner) where TPageComponent : IPageComponent
     {
-        if (pageComponents == null || !pageComponents.Any())
-            throw new ArgumentException("No components found in the provided collection from startup!");
+        ArgumentNullException.ThrowIfNull(owner);
+        ArgumentNullException.ThrowIfNull(driver);
 
-        _pageComponents = new HashSet<IPageComponent>(pageComponents);
-    }
+        var instance = Activator.CreateInstance(typeof(TPageComponent), driver, owner)
+            ?? throw new InvalidOperationException($"Failed to create an instance of {typeof(TPageComponent).Name}.");
 
-    public TPageComponent Create<TPageComponent>() where TPageComponent : IPageComponent
-    {
-        return _pageComponents
-            .OfType<TPageComponent>()
-            .FirstOrDefault()
-            ?? throw new InvalidOperationException($"{typeof(TPageComponent).Name} does not exist in the provided collection from startup!");
+        return (TPageComponent)instance;
     }
 }

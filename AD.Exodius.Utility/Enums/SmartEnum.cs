@@ -1,6 +1,6 @@
-﻿using System.Collections.Concurrent;
+﻿using AD.Exodius.Utility.XunitExtensions;
+using System.Collections.Concurrent;
 using System.Reflection;
-using AD.Exodius.Utility.XunitExtensions;
 
 namespace AD.Exodius.Utility.Enums;
 

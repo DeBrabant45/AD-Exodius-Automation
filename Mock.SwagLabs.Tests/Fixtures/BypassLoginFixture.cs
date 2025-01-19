@@ -1,6 +1,4 @@
-﻿using AD.Exodius.Drivers;
-using AD.Exodius.Navigators;
-using AD.Exodius.Navigators.Strategies;
+﻿using AD.Exodius.Navigators.Strategies;
 using AD.Exodius.Utility.Tasks;
 using Mock.SwagLabs.Configurations.Models;
 using Mock.SwagLabs.Pages;
@@ -10,16 +8,10 @@ namespace Mock.SwagLabs.Tests.Fixtures;
 
 public class BypassLoginFixture : BaseTestFixture
 {
-    protected INavigator Navigator;
-
-    public BypassLoginFixture(
-        ITestOutputHelper output, 
-        IDriver driver, 
-        TestSettings settings,
-        INavigator navigator) 
-        : base(output, driver, settings)
+    public BypassLoginFixture(ITestOutputHelper output)
+        : base(output)
     {
-        Navigator = navigator;
+
     }
 
     protected override async Task Setup()

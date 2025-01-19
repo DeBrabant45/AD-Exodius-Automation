@@ -1,6 +1,6 @@
-﻿using FluentAssertions.Execution;
+﻿using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Numeric;
-using FluentAssertions;
 
 namespace AD.Exodius.Utility.Assertions;
 

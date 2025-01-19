@@ -4,7 +4,7 @@
 /// Defines a contract for waiting until a section or page has fully loaded.
 /// </summary>
 /// <author>Aaron DeBrabant</author>
-public interface IWaitSection : IPageComponent
+public interface IWaitComponent : IPageComponent
 {
     /// <summary>
     /// Waits until the section or page is fully loaded, ensuring that all required elements and content are visible and ready for interaction.

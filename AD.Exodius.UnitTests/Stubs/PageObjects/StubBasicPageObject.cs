@@ -3,11 +3,7 @@ using AD.Exodius.Pages;
 
 namespace AD.Exodius.UnitTests.Stubs.PageObjects;
 
-public class StubBasicPageObject : PageObject
+public class StubBasicPageObject(IDriver driver) : PageObject(driver)
 {
-    public StubBasicPageObject(IDriver driver)
-        : base(driver)
-    {
 
-    }
 }

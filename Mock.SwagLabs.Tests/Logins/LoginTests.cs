@@ -1,8 +1,5 @@
-﻿using AD.Exodius.Drivers;
-using AD.Exodius.Navigators;
-using AD.Exodius.Navigators.Strategies;
+﻿using AD.Exodius.Navigators.Strategies;
 using AD.Exodius.Utility.Tasks;
-using Mock.SwagLabs.Configurations.Models;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Pages.Models;
 using Mock.SwagLabs.Tests.Fixtures;
@@ -11,16 +8,10 @@ namespace Mock.SwagLabs.Tests.Logins;
 
 public class LoginTests : BaseTestFixture
 {
-    private readonly INavigator _navigator;
-
-    public LoginTests(
-        ITestOutputHelper output,
-        IDriver driver,
-        TestSettings settings,
-        INavigator navigator)
-        : base(output, driver, settings)
+    public LoginTests(ITestOutputHelper output)
+        : base(output)
     {
-        _navigator = navigator;
+
     }
 
     [Theory]
@@ -31,7 +22,7 @@ public class LoginTests : BaseTestFixture
     {
         var login = new Login { Username = username, Password = password };
 
-        var isLoginPageErrorMessagePresent = await _navigator
+        var isLoginPageErrorMessagePresent = await Navigator
             .GoTo<LoginPage, ByRoute>()
             .Then(page => page.Login(login))
             .Then(page => page.IsErrorMessagePresent());
@@ -44,7 +35,7 @@ public class LoginTests : BaseTestFixture
     [Theory, AutoData]
     public async Task User_Should_See_Login_Error_Message(Login login)
     {
-        var loginPageErrorMessage = await _navigator
+        var loginPageErrorMessage = await Navigator
             .GoTo<LoginPage, ByRoute>()
             .Then(page => page.Login(login))
             .Then(page => page.GetErrorMessageText());
@@ -58,7 +49,7 @@ public class LoginTests : BaseTestFixture
     {
         var login = new Login { Username = username, Password = password };
 
-        var loginPageErrorMessage = await _navigator
+        var loginPageErrorMessage = await Navigator
             .GoTo<LoginPage, ByRoute>()
             .Then(page => page.Login(login))
             .Then(page => page.GetErrorMessageText());

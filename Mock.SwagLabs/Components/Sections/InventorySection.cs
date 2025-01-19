@@ -1,21 +1,22 @@
 ﻿using AD.Exodius.Components;
-using AD.Exodius.Drivers;
 using AD.Exodius.Locators;
+using AD.Exodius.Pages;
 
 namespace Mock.SwagLabs.Components.Sections;
 
-public class InventorySection : IInventorySection
+public class InventorySection : PageComponent, IInventorySection
 {
-    private readonly IDriver _driver;
-
-    public InventorySection(IDriver driver)
+    public InventorySection(
+        IDriver driver,
+        IPageObject owner) 
+        : base(driver, owner)
     {
-        _driver = driver;
+
     }
 
-    private Task<List<LabelElement>> ItemNames => _driver.FindAllElements<ByTestData, LabelElement>("inventory-item-name");
+    private Task<List<LabelElement>> ItemNames => Driver.FindAllElements<ByTestData, LabelElement>("inventory-item-name");
 
-    private Task<List<LabelElement>> ItemPrices => _driver.FindAllElements<ByTestData, LabelElement>("inventory-item-price");
+    private Task<List<LabelElement>> ItemPrices => Driver.FindAllElements<ByTestData, LabelElement>("inventory-item-price");
 
     public async Task<List<string>> GetAllItemNamesInOrder()
     {

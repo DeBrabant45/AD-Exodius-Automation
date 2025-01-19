@@ -1,7 +1,7 @@
-﻿using FluentAssertions.Execution;
-using FluentAssertions.Primitives;
+﻿using AD.Exodius.Utility.Helpers;
 using FluentAssertions;
-using AD.Exodius.Utility.Helpers;
+using FluentAssertions.Execution;
+using FluentAssertions.Primitives;
 
 namespace AD.Exodius.Utility.Assertions;
 

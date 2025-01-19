@@ -10,13 +10,13 @@ public class DriverFactory : IDriverFactory
         var browserFactory = new BrowserFactory();
         var pathResolver = new PathResolver();
         var pageFactory = new PageFactory(browserFactory, driverSettings, pathResolver);
-        var locatorStratgeyFactory = new LocatorStrategyFactory();
+        var locatorStrategyFactory = new LocatorStrategyFactory();
         var elementFactory = new ElementFactory();
         var networkFactory = new NetworkResponseFactory();
 
         return new PageDriver(
             pageFactory,
-            locatorStratgeyFactory,
+            locatorStrategyFactory,
             browserFactory,
             elementFactory,
             networkFactory,

@@ -1,5 +1,5 @@
-﻿using AD.Exodius.Navigators.Factories;
-using AD.Exodius.Navigators.Strategies;
+﻿using AD.Exodius.Navigators.Strategies;
+using AD.Exodius.Navigators.Strategies.Factories;
 
 namespace AD.Exodius.UnitTests.Navigators.Factories;
 

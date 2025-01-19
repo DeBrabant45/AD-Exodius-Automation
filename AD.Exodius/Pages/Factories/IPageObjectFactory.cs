@@ -1,4 +1,6 @@
-﻿namespace AD.Exodius.Pages.Factories;
+﻿using AD.Exodius.Drivers;
+
+namespace AD.Exodius.Pages.Factories;
 
 /// <summary>
 /// Represents a factory responsible for creating instances of page objects.
@@ -13,5 +15,5 @@ public interface IPageObjectFactory
     /// </summary>
     /// <typeparam name="TPage">The type of the page object to create.</typeparam>
     /// <returns>An instance of the page object <typeparamref name="TPage"/>.</returns>
-    public TPage Create<TPage>() where TPage : IPageObject;
+    public TPage Create<TPage>(IDriver driver) where TPage : IPageObject;
 }

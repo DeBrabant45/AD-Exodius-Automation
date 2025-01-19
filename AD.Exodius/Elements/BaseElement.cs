@@ -1,5 +1,5 @@
-﻿using System.Text.RegularExpressions;
-using AD.Exodius.Utility.Primitives;
+﻿using AD.Exodius.Utility.Primitives;
+using System.Text.RegularExpressions;
 
 namespace AD.Exodius.Elements;
 

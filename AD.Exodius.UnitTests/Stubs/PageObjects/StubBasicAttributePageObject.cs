@@ -6,11 +6,7 @@ namespace AD.Exodius.UnitTests.Stubs.PageObjects;
 
 [PageObjectName("Basic Attribute")]
 [PageObjectRoute("/basic")]
-public class StubBasicAttributePageObject : PageObject
+public class StubBasicAttributePageObject(IDriver driver) : PageObject(driver)
 {
-    public StubBasicAttributePageObject(IDriver driver)
-        : base(driver)
-    {
 
-    }
 }

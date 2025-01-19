@@ -1,60 +1,46 @@
-﻿using AD.Exodius.Components;
-using AD.Exodius.Components.Factories;
+﻿using AD.Exodius.Components.Factories;
+using AD.Exodius.Drivers;
+using AD.Exodius.Pages;
 using AD.Exodius.UnitTests.Stubs.Components;
+using NSubstitute;
 
 namespace AD.Exodius.UnitTests.Components.Factories;
 
 public class PageComponentFactoryTests
 {
-    private IPageComponentFactory _sut;
-    private readonly StubBasicPageComponent _stubBasicPageComponent;
-    private readonly StubSamplePageComponent _stubSamplePageComponent;
+    private readonly IPageObject _mockPageObject;
+    private readonly IDriver _mockDriver;
 
     public PageComponentFactoryTests()
     {
-        _stubBasicPageComponent = new StubBasicPageComponent();
-        _stubSamplePageComponent = new StubSamplePageComponent();
-
-        _sut = new PageComponentFactory(
-        [
-            _stubBasicPageComponent,
-            _stubSamplePageComponent,
-        ]);
-    }
-
-    [Theory]
-    [MemberData(nameof(GetErrorTestData))]
-    public void Constructor_ShouldThrowException_WhenComponentsAreNullOrEmpty(IEnumerable<IPageComponent> components)
-    {
-        var exception = Assert.Throws<ArgumentException>(() => new PageComponentFactory(components));
-
-        Assert.Equal("No components found in the provided collection from startup!", exception.Message);
-    }
-
-    public static TheoryData<IEnumerable<IPageComponent>> GetErrorTestData()
-    {
-        return
-        [
-            null,
-            [],
-        ];
+        _mockPageObject = Substitute.For<IPageObject>();
+        _mockDriver = Substitute.For<IDriver>();
     }
 
     [Fact]
-    public void Create_ShouldReturn_ExpectedComponent()
+    public void Create_ShouldThrowArgumentNullException_WhenOwnerIsNull()
     {
-        var results = _sut.Create<StubBasicPageComponent>();
+        var exception = Assert.Throws<ArgumentNullException>(() =>
+            PageComponentFactory.Create<StubBasicPageComponent>(_mockDriver, null));
 
-        Assert.Equal(_stubBasicPageComponent, results);
+        Assert.Equal("Value cannot be null. (Parameter 'owner')", exception.Message);
     }
 
     [Fact]
-    public void Create_ShouldThrowException_WhenRequestedComponentIsNotPresent()
+    public void Create_ShouldThrowMissingMethodException_WhenComponentCannotBeCreated()
     {
-        _sut = new PageComponentFactory([_stubBasicPageComponent]);
+        var exception = Assert.Throws<MissingMethodException>(() =>
+            PageComponentFactory.Create<NonCreatablePageComponent>(_mockDriver, _mockPageObject));
 
-        var exception = Assert.Throws<InvalidOperationException>(_sut.Create<StubSamplePageComponent>);
+        Assert.Equal($"Constructor on type '{typeof(NonCreatablePageComponent).FullName}' not found.", exception.Message);
+    }
 
-        Assert.Equal($"{typeof(StubSamplePageComponent).Name} does not exist in the provided collection from startup!", exception.Message);
+    [Fact]
+    public void Create_ShouldReturnExpectedComponent()
+    {
+        var result = PageComponentFactory.Create<StubBasicPageComponent>(_mockDriver, _mockPageObject);
+
+        Assert.NotNull(result);
+        Assert.IsType<StubBasicPageComponent>(result);
     }
 }

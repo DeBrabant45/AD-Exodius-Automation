@@ -1,11 +1,8 @@
-﻿using AD.Exodius.Drivers;
-using AD.Exodius.Navigators;
-using AD.Exodius.Navigators.Strategies;
+﻿using AD.Exodius.Navigators.Strategies;
 using AD.Exodius.Utility.Assertions;
 using AD.Exodius.Utility.Tasks;
 using Mock.SwagLabs.Components.Enums;
 using Mock.SwagLabs.Components.Sections;
-using Mock.SwagLabs.Configurations.Models;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Tests.Fixtures;
 
@@ -13,12 +10,8 @@ namespace Mock.SwagLabs.Tests.Products;
 
 public class ProductSortFilterTests : BypassLoginFixture
 {
-    public ProductSortFilterTests(
-        ITestOutputHelper output, 
-        IDriver driver, 
-        TestSettings settings,
-        INavigator navigator) 
-        : base(output, driver, settings, navigator)
+    public ProductSortFilterTests(ITestOutputHelper output)
+        : base(output)
     {
 
     }
@@ -31,7 +24,7 @@ public class ProductSortFilterTests : BypassLoginFixture
         SortOrder expectedSortOrder)
     {
         var productsPage = await Navigator
-            .GoTo<ProductsPage, ByRoute>();
+            .GoTo<ProductsPage, ByAction>();
 
         var productSortFilter = await productsPage
             .GetComponent<IProductSortSection>()

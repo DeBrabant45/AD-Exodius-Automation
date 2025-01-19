@@ -1,5 +1,5 @@
-﻿using FluentAssertions.Numeric;
-using AD.Exodius.Utility.Assertions;
+﻿using AD.Exodius.Utility.Assertions;
+using FluentAssertions.Numeric;
 
 namespace AD.Exodius.Utility.UnitTests.Assertions;
 

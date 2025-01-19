@@ -1,20 +1,22 @@
-﻿using AD.Exodius.Drivers;
+﻿using AD.Exodius.Components;
 using AD.Exodius.Locators;
+using AD.Exodius.Pages;
 using AD.Exodius.Utility.Enums;
 using Mock.SwagLabs.Components.Enums;
 
 namespace Mock.SwagLabs.Components.Sections;
 
-public class ProductSortSection : IProductSortSection
+public class ProductSortSection : PageComponent, IProductSortSection
 {
-    private readonly IDriver _driver;
-
-    public ProductSortSection(IDriver driver)
+    public ProductSortSection(
+        IDriver driver,
+        IPageObject owner) 
+        : base(driver, owner)
     {
-        _driver = driver;
+
     }
 
-    private SelectElement ProductSelectElement => _driver.FindElement<ByTestData, SelectElement>("product-sort-container");
+    private SelectElement ProductSelectElement => Driver.FindElement<ByTestData, SelectElement>("product-sort-container");
 
     public async Task<IProductSortSection> SetFilter(ProductFilter filter)
     {
