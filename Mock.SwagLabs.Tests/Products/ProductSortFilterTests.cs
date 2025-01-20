@@ -5,20 +5,16 @@ using Mock.SwagLabs.Components.Enums;
 using Mock.SwagLabs.Components.Sections;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Tests.Fixtures;
+using NUnit.Framework;
 
 namespace Mock.SwagLabs.Tests.Products;
 
-public class ProductSortFilterTests : BypassLoginFixture
+[TestFixture]
+[Parallelizable(ParallelScope.Self)]
+public class ProductSortFilterTests : BypassLoginTestStartup
 {
-    public ProductSortFilterTests(ITestOutputHelper output)
-        : base(output)
-    {
-
-    }
-
-    [Theory]
-    [InlineData(ProductFilter.AZ, SortOrder.Ascending)]
-    [InlineData(ProductFilter.ZA, SortOrder.Descending)]
+    [TestCase(ProductFilter.AZ, SortOrder.Ascending)]
+    [TestCase(ProductFilter.ZA, SortOrder.Descending)]
     public async Task ProductSortFilter_ShouldSortItemNames_WhenFilterIsApplied_AccordingToSortOrder(
         ProductFilter productFilter,
         SortOrder expectedSortOrder)
@@ -39,9 +35,8 @@ public class ProductSortFilterTests : BypassLoginFixture
             .BeInOrder(expectedSortOrder);
     }
 
-    [Theory]
-    [InlineData(ProductFilter.LoHi, SortOrder.Ascending)]
-    [InlineData(ProductFilter.HiLo, SortOrder.Descending)]
+    [TestCase(ProductFilter.LoHi, SortOrder.Ascending)]
+    [TestCase(ProductFilter.HiLo, SortOrder.Descending)]
     public async Task ProductSortFilter_ShouldSortItemPrices_WhenFilterIsApplied_AccordingToSortOrder(
         ProductFilter productFilter,
         SortOrder expectedSortOrder)

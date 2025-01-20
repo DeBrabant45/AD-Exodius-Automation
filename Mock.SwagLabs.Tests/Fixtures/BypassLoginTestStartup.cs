@@ -6,17 +6,11 @@ using Mock.SwagLabs.Pages.Mappers;
 
 namespace Mock.SwagLabs.Tests.Fixtures;
 
-public class BypassLoginFixture : BaseTestFixture
+public class BypassLoginTestStartup : BaseTestStartup
 {
-    public BypassLoginFixture(ITestOutputHelper output)
-        : base(output)
+    protected override async Task SetUpInternal()
     {
-
-    }
-
-    protected override async Task Setup()
-    {
-        await base.Setup();
+        await base.SetUpInternal();
 
         var login = ApplicationSettings
             .GetFirstUser()

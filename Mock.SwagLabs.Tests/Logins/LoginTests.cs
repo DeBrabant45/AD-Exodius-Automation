@@ -3,21 +3,17 @@ using AD.Exodius.Utility.Tasks;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Pages.Models;
 using Mock.SwagLabs.Tests.Fixtures;
+using NUnit.Framework;
 
 namespace Mock.SwagLabs.Tests.Logins;
 
-public class LoginTests : BaseTestFixture
+[TestFixture]
+[Parallelizable(ParallelScope.Self)]
+public class LoginTests : BaseTestStartup
 {
-    public LoginTests(ITestOutputHelper output)
-        : base(output)
-    {
-
-    }
-
-    [Theory]
-    [InlineData("standard_user", "secret_sauce")]
-    [InlineData("performance_glitch_user", "secret_sauce")]
-    [InlineData("problem_user", "secret_sauce")]
+    [TestCase("standard_user", "secret_sauce")]
+    [TestCase("performance_glitch_user", "secret_sauce")]
+    [TestCase("problem_user", "secret_sauce")]
     public async Task User_Should_Login_Without_Errors(string username, string password)
     {
         var login = new Login { Username = username, Password = password };
@@ -32,9 +28,12 @@ public class LoginTests : BaseTestFixture
             .BeFalse();
     }
 
-    [Theory, AutoData]
-    public async Task User_Should_See_Login_Error_Message(Login login)
+    [TestCase("standard_user", "junk")]
+    [TestCase("standard_user", "hello")]
+    public async Task User_Should_See_Login_Error_Message(string username, string password)
     {
+        var login = new Login { Username = username, Password = password };
+
         var loginPageErrorMessage = await Navigator
             .GoTo<LoginPage, ByRoute>()
             .Then(page => page.Login(login))
@@ -43,8 +42,7 @@ public class LoginTests : BaseTestFixture
         loginPageErrorMessage.Should().Be("Epic sadface: Username and password do not match any user in this service");
     }
 
-    [Theory]
-    [InlineData("locked_out_user", "secret_sauce")]
+    [TestCase("locked_out_user", "secret_sauce")]
     public async Task User_Should_See_Login_Locked_Out_Error_Message(string username, string password)
     {
         var login = new Login { Username = username, Password = password };

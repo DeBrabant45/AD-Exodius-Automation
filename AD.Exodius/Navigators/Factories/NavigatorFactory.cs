@@ -9,12 +9,10 @@ public class NavigatorFactory : INavigatorFactory
     private readonly IPageObjectFactory _pageObjectFactory;
     private readonly INavigationStrategyFactory _navigationStrategyFactory;
 
-    public NavigatorFactory(
-        IPageObjectFactory pageObjectFactory,
-        INavigationStrategyFactory navigationStrategyFactory)
+    public NavigatorFactory()
     {
-        _pageObjectFactory = pageObjectFactory;
-        _navigationStrategyFactory = navigationStrategyFactory;
+        _pageObjectFactory = new PageObjectFactory();
+        _navigationStrategyFactory = new NavigationStrategyFactory();
     }
 
     public TNavigator Create<TNavigator>(IDriver driver) where TNavigator : INavigator
