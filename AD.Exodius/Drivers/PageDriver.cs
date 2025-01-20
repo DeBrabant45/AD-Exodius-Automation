@@ -9,7 +9,7 @@ using Serilog;
 
 namespace AD.Exodius.Drivers;
 
-public class PageDriver : IDriver, IDisposable
+public class PageDriver : IDriver
 {
     private IPage _page;
     private IBrowser _browser;

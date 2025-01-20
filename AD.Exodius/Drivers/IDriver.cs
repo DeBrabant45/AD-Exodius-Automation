@@ -9,7 +9,7 @@ namespace AD.Exodius.Drivers;
 /// This interface combines several services for browser interaction, navigation, element finding, waiting, storage, screenshot capturing, tracing, and network interaction.
 /// </remarks>
 /// <author>Aaron DeBrabant</author>
-public interface IDriver : IBrowserService, INavigationService, IElementFindService, IWaitService, IStorageService, IDiagnosticsService, INetworkFindService
+public interface IDriver : IBrowserService, INavigationService, IElementFindService, IWaitService, IStorageService, IDiagnosticsService, INetworkFindService, IDisposable
 {
 
 }
