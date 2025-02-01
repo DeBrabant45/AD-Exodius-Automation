@@ -18,14 +18,18 @@ jobs:
         with:
           dotnet-version: '8.0'
 
-      - name: Restore dependencies for solution
-        run: dotnet restore AD.Exodius.Automation.sln
+      - name: Restore dependencies
+        run: dotnet restore AD-Exodius-Automation.sln
+        working-directory: AD-Exodius-Automation 
 
-      - name: Build solution
-        run: dotnet build AD.Exodius.Automation.sln --configuration Release
+      - name: Build the solution
+        run: dotnet build AD-Exodius-Automation.sln --configuration Release
+        working-directory: AD-Exodius-Automation 
 
       - name: Run unit tests for AD.Exodius.Utility.UnitTests
         run: dotnet test AD-Exodius-Automation/AD.Exodius.Utility.UnitTests/AD.Exodius.Utility.UnitTests.csproj --configuration Release --no-build --verbosity normal
+        working-directory: AD-Exodius-Automation 
 
       - name: Run unit tests for AD.Exodius.UnitTests
         run: dotnet test AD-Exodius-Automation/AD.Exodius.UnitTests/AD.Exodius.UnitTests.csproj --configuration Release --no-build --verbosity normal
+        working-directory: AD-Exodius-Automation  
