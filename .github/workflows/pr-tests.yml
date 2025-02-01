@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '8.0'
 
       - name: Restore dependencies for solution
-        run: dotnet restore AD-Exodius-Automation.sln
+        run: dotnet restore AD.Exodius.Automation.sln
 
       - name: Build solution
         run: dotnet build AD.Exodius.Automation.sln --configuration Release
