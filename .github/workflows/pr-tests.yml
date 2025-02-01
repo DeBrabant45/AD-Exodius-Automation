@@ -19,13 +19,16 @@ jobs:
           dotnet-version: '8.0'
 
       - name: Restore dependencies
-        run: dotnet restore AD.Exodius.Automation.sln
-        working-directory: /home/runner/work/AD-Exodius-Automation/AD-Exodius-Automation
+        run: dotnet restore
 
-      - name: Build the solution
-        run: dotnet build AD.Exodius.Automation.sln --configuration Release
-        working-directory: /home/runner/work/AD-Exodius-Automation/AD-Exodius-Automation
+      - name: Build the project
+        run: dotnet build --configuration Release
 
-      - name: Run unit tests for AD.Exodius.Utility.UnitTests
-        run: dotnet test AD.Exodius.Utility.UnitTests/AD.Exodius.Utility.UnitTests.csproj --configuration Release --no-build --verbosity normal
-        working-directory: /home/runner/work/AD-Exodius-Automation/AD-Exodius-Automation
+      - name: Run unit tests for Utility
+        run: dotnet test ${{ github.workspace }}/AD-Exodius-Automation/AD.Exodius.Utility.UnitTests/AD.Exodius.Utility.UnitTests.csproj --configuration Release --no-build --verbosity normal
+
+      - name: Run unit tests for Main UnitTests
+        run: dotnet test ${{ github.workspace }}/AD-Exodius-Automation/AD.Exodius.UnitTests/AD.Exodius.UnitTests.csproj --configuration Release --no-build --verbosity normal
+
+      - name: Run unit tests for Mock.SwagLabs
+        run: dotnet test ${{ github.workspace }}/AD-Exodius-Automation/Mock.SwagLabs.Tests/Mock.SwagLabs.Tests.csproj --configuration Release --no-build --verbosity normal
