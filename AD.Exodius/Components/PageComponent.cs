@@ -12,7 +12,7 @@ public class PageComponent : IPageComponent
         IDriver driver,
         IPageComponentRegistry owner)
     {
-        Owner = owner;
         Driver = driver;
+        Owner = owner;
     }
 }

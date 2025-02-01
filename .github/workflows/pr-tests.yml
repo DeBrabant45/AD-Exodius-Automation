@@ -1,0 +1,32 @@
+name: .NET Build and Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0'
+
+      - name: Restore dependencies for solution
+        run: dotnet restore AD-Exodius-Automation.sln
+
+      - name: Build solution
+        run: dotnet build AD-Exodius-Automation.sln --configuration Release /p:Platform="x64"
+
+      - name: Run unit tests for AD.Exodius.Utility.UnitTests
+        run: dotnet test AD-Exodius-Automation/AD.Exodius.Utility.UnitTests/AD.Exodius.Utility.UnitTests.csproj --configuration Release --no-build --verbosity normal
+
+      - name: Run unit tests for AD.Exodius.UnitTests
+        run: dotnet test AD-Exodius-Automation/AD.Exodius.UnitTests/AD.Exodius.UnitTests.csproj --configuration Release --no-build --verbosity normal
+
