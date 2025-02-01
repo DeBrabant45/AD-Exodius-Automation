@@ -19,12 +19,21 @@ jobs:
           dotnet-version: '8.0'
 
       - name: Restore dependencies
-        run: dotnet restore AD-Exodius-Automation.sln
+        run: dotnet restore AD.Exodius.Automation.sln
         working-directory: AD-Exodius-Automation 
 
       - name: Build the solution
-        run: dotnet build AD-Exodius-Automation.sln --configuration Release
+        run: dotnet build AD.Exodius.Automation.sln --configuration Release
         working-directory: AD-Exodius-Automation 
+
+      - name: Check current working directory
+        run: pwd
+
+      - name: List files in the root directory
+        run: ls -alh
+
+      - name: List files in AD-Exodius-Automation directory
+        run: ls -alh AD-Exodius-Automation
 
       - name: Run unit tests for AD.Exodius.Utility.UnitTests
         run: dotnet test AD-Exodius-Automation/AD-Exodius-Automation/AD.Exodius.Utility.UnitTests/AD.Exodius.Utility.UnitTests.csproj --configuration Release --no-build --verbosity normal
