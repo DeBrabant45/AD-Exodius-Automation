@@ -15,7 +15,7 @@ public class PageComponentRegistry : IPageComponentRegistry
         _components = [];
     }
 
-    public TPageComponent AddComponent<TPageComponent>() where TPageComponent : PageComponent
+    public TPageComponent AddComponent<TPageComponent>() where TPageComponent : IPageComponent
     {
         var component = PageComponentFactory.Create<TPageComponent>(Driver, this);
         _components.Add(component);
