@@ -10,12 +10,12 @@ namespace AD.Exodius.Registries;
 public interface IPageComponentRegistry
 {
     /// <summary>
-    /// Adds a component to the registry. The component must be a subclass of <see cref="PageComponent"/>.
+    /// Adds a component to the registry. The component must implement <see cref="IPageComponent"/>.
     /// </summary>
-    /// <typeparam name="TPageComponent">The type of the component to add. Must be a subclass of <see cref="PageComponent"/>.</typeparam>
+    /// <typeparam name="TPageComponent">The type of the component to add. It must implement <see cref="IPageComponent"/>.</typeparam>
     /// <returns>The added component.</returns>
-    /// <exception cref="InvalidOperationException">Thrown if the component is not a valid type (i.e., not a subclass of <see cref="PageComponent"/>).</exception>
-    TPageComponent AddComponent<TPageComponent>() where TPageComponent : PageComponent;
+    /// <exception cref="InvalidOperationException">Thrown if the component does not implement <see cref="IPageComponent"/>.</exception>
+    TPageComponent AddComponent<TPageComponent>() where TPageComponent : IPageComponent;
 
     /// <summary>
     /// Retrieves the first component of the specified type from the registry.
