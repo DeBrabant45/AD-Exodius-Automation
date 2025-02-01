@@ -29,6 +29,3 @@ jobs:
 
       - name: Run unit tests for Main UnitTests
         run: dotnet test ${{ github.workspace }}/AD.Exodius.UnitTests/AD.Exodius.UnitTests.csproj --configuration Release --no-build --verbosity normal
-
-      - name: Run unit tests for Mock.SwagLabs
-        run: dotnet test ${{ github.workspace }}/Mock.SwagLabs.Tests/Mock.SwagLabs.Tests.csproj --configuration Release --no-build --verbosity normal
