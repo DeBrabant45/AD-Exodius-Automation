@@ -2,18 +2,11 @@
 using AD.Exodius.Locators;
 using AD.Exodius.Pages;
 
-namespace Mock.SwagLabs.Components.Sections;
+namespace Mock.SwagLabs.Components;
 
-public class NavigationActionComponent : PageComponent, INavigationActionComponent
+public class NavigationActionComponent(IDriver driver, IPageObject owner) 
+    : PageComponent(driver, owner), INavigationActionComponent
 {
-    public NavigationActionComponent(
-        IDriver driver,
-        IPageObject owner)
-        : base(driver, owner)
-    {
-
-    }
-
     private ButtonElement BurgerMenuButton => Driver.FindElement<ById, ButtonElement>("react-burger-menu-btn");
     private LabelElement MenuWrapLabel => Driver.FindElement<ByXPath, LabelElement>("//div[@class='bm-menu-wrap']");
 

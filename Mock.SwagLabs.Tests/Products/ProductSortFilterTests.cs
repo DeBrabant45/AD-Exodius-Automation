@@ -1,8 +1,8 @@
 ﻿using AD.Exodius.Navigators.Strategies;
 using AD.Exodius.Utility.Assertions;
 using AD.Exodius.Utility.Tasks;
+using Mock.SwagLabs.Components;
 using Mock.SwagLabs.Components.Enums;
-using Mock.SwagLabs.Components.Sections;
 using Mock.SwagLabs.Pages;
 using Mock.SwagLabs.Tests.Fixtures;
 using NUnit.Framework;
@@ -23,11 +23,11 @@ public class ProductSortFilterTests : BypassLoginTestStartup
             .GoTo<ProductsPage, ByAction>();
 
         var productSortFilter = await productsPage
-            .GetComponent<IProductSortSection>()
+            .GetComponent<IProductSortComponent>()
             .Then(component => component.SetFilter(productFilter));
 
         var allItemNames = await productsPage
-            .GetComponent<IInventorySection>()
+            .GetComponent<IInventoryComponent>()
             .Then(component => component.GetAllItemNamesInOrder());
 
         allItemNames
@@ -45,11 +45,11 @@ public class ProductSortFilterTests : BypassLoginTestStartup
             .GoTo<ProductsPage, ByRoute>();
 
         var productSortFilter = await productsPage
-            .GetComponent<IProductSortSection>()
+            .GetComponent<IProductSortComponent>()
             .Then(component => component.SetFilter(productFilter));
 
         var allItemPrices = await productsPage
-            .GetComponent<IInventorySection>()
+            .GetComponent<IInventoryComponent>()
             .Then(component => component.GetAllPricesInOrder<decimal>());
 
         allItemPrices
