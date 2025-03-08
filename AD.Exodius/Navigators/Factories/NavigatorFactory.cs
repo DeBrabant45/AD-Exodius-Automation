@@ -7,12 +7,17 @@ namespace AD.Exodius.Navigators.Factories;
 public class NavigatorFactory : INavigatorFactory
 {
     private readonly IPageObjectFactory _pageObjectFactory;
+    private readonly IPageObjectRegistryFactory _pageObjectRegistryFactory;
     private readonly INavigationStrategyFactory _navigationStrategyFactory;
 
-    public NavigatorFactory()
+    public NavigatorFactory(
+        IPageObjectFactory? pageObjectFactory = null,
+        IPageObjectRegistryFactory? pageObjectRegistryFactory = null,
+        INavigationStrategyFactory? navigationStrategyFactory = null)
     {
-        _pageObjectFactory = new PageObjectFactory();
-        _navigationStrategyFactory = new NavigationStrategyFactory();
+        _pageObjectFactory = pageObjectFactory ?? new PageObjectFactory();
+        _pageObjectRegistryFactory = pageObjectRegistryFactory ?? new PageObjectRegistryFactory();
+        _navigationStrategyFactory = navigationStrategyFactory ?? new NavigationStrategyFactory();
     }
 
     public TNavigator Create<TNavigator>(IDriver driver) where TNavigator : INavigator
@@ -21,7 +26,8 @@ public class NavigatorFactory : INavigatorFactory
 
         var instance = Activator.CreateInstance(typeof(TNavigator), 
             driver, 
-            _pageObjectFactory, 
+            _pageObjectFactory,
+            _pageObjectRegistryFactory,
             _navigationStrategyFactory)
             ?? throw new InvalidOperationException($"Failed to create an instance of {typeof(TNavigator).Name}.");
 

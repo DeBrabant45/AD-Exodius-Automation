@@ -9,16 +9,19 @@ namespace AD.Exodius.Navigators;
 public class Navigator : INavigator
 {
     private readonly IDriver _driver;
-    private readonly IPageObjectFactory _pageFactory;
+    private readonly IPageObjectFactory _pageObjectFactory;
+    private readonly IPageObjectRegistryFactory _pageObjectRegistryFactory;
     private readonly INavigationStrategyFactory _navigationStrategyFactory;
 
     public Navigator(
         IDriver driver,
-        IPageObjectFactory pageFactory,
+        IPageObjectFactory pageObjectFactory,
+        IPageObjectRegistryFactory pageObjectRegistryFactory,
         INavigationStrategyFactory navigationStrategyFactory)
     {
         _driver = driver;
-        _pageFactory = pageFactory;
+        _pageObjectFactory = pageObjectFactory;
+        _pageObjectRegistryFactory = pageObjectRegistryFactory;
         _navigationStrategyFactory = navigationStrategyFactory;
     }
 
@@ -26,14 +29,18 @@ public class Navigator : INavigator
         where TPage : IPageObject
         where TNavigation : INavigationStrategy
     {
-        var page = _pageFactory.Create<TPage>(_driver);
-        page.InitializeLazyComponents();
+        var pageObject = _pageObjectFactory.Create<TPage>(_driver);
+
+        var pageObjectRegistry = _pageObjectRegistryFactory.Create(pageObject);
+        pageObjectRegistry?.RegisterComponents(pageObject);
+
+        pageObject.InitializeLazyComponents();
 
         var navigation = _navigationStrategyFactory.Create<TNavigation>();
-        await navigation.Navigate(_driver, page);
+        await navigation.Navigate(_driver, pageObject);
 
-        await page.WaitUntilReady();
+        await pageObject.WaitUntilReady();
 
-        return page;
+        return pageObject;
     }
 }

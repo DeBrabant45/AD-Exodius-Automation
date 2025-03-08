@@ -1,22 +1,16 @@
 ﻿using AD.Exodius.Pages;
 using AD.Exodius.Pages.Attributes;
-using Mock.SwagLabs.Components.Sections;
+using Mock.SwagLabs.Pages.Registries;
 
 namespace Mock.SwagLabs.Pages;
 
 [PageObjectMeta(
     Route = "/inventory.html",
     Name = "Products",
-    DomId = "inventory-sidebar-link"
+    DomId = "inventory-sidebar-link",
+    Registry = typeof(ProductsPageRegistry)
 )]
-public class ProductsPage : PageObject
+public class ProductsPage(IDriver driver) : PageObject(driver)
 {
-    public ProductsPage(IDriver driver)
-        : base(driver)
-    {
-        AddComponent<WaitSection>();
-        AddComponent<ProductSortSection>();
-        AddComponent<InventorySection>();
-        AddComponent<NavigationActionComponent>();
-    }
+
 }
